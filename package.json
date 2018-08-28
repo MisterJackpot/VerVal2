@@ -208,6 +208,10 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
     "devtron": "^1.4.0",
+    "echarts": "^4.1.0",
+    "echarts-for-react": "^2.0.14",
+    "echarts-gl": "^1.1.1",
+    "echarts-stat": "^1.1.1",
     "electron-debug": "^2.0.0",
     "history": "^4.7.2",
     "react": "^16.4.1",
