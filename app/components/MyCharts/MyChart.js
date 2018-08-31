@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
-import routes from '../constants/routes.json';
+import routes from '../../constants/routes.json';
 import 'echarts-gl';
 import ReactEcharts from 'echarts-for-react';
-import { data } from './../utils/Data';
-import { kmeans } from '../utils/kmeans';
+import { data } from '../../utils/Data';
+import { kmeans } from '../../utils/kmeans';
 import styles from './MyChart.css';
 
 export default class TestChart extends PureComponent<Props> {

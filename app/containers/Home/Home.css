@@ -2,7 +2,6 @@
   position: relative;
   margin-top: 2em;
   text-align: center;
-
 }
 
 .container h2 {
@@ -11,5 +10,5 @@
 
 .container a {
   font-size: 1.4rem;
-  color: #D63715;
+  color: #d63715;
 }
