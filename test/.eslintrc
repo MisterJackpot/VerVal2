@@ -2,9 +2,13 @@
   "env": {
     "jest/globals": true
   },
+<<<<<<< HEAD
   "plugins": [
     "jest"
   ],
+=======
+  "plugins": ["jest"],
+>>>>>>> 4523da32feb75e09cb33b5e291b9c2ae04939ce0
   "rules": {
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",

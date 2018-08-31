@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  margin-top: 2em;
+  text-align: center;
+
+}
+
+.container h2 {
+  font-size: 5rem;
+}
+
+.container a {
+  font-size: 1.4rem;
+  color: #D63715;
+}
