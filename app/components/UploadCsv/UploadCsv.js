@@ -7,10 +7,10 @@ export default class UploadCsv extends React.Component {
   onDrop(acceptedFiles, rejectedFiles) {
     const { rejectedFunction, acceptedFunction } = this.props;
 
-    if (acceptedFunction) {
+    if (acceptedFunction && acceptedFiles) {
       acceptedFunction(acceptedFiles);
     }
-    if (rejectedFunction) {
+    if (rejectedFunction && rejectedFiles) {
       rejectedFunction(rejectedFiles);
     }
   }

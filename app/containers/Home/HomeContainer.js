@@ -10,13 +10,32 @@ import NavigateButtonComponent from '../../components/NavigateButtonComponent/Na
 
 type Props = {};
 
-export default class Home extends Component<Props> {
+export default class HomeContainer extends Component<Props> {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      password: '',
+    };
+  }
+
+  onChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({ [name]: value });
+};
 
   render() {
+    const { password } = this.state;
     return (
       <div className={styles.container} align="center" data-tid="container">
-        <ImageWrapperComponent path={'./Assets/federages.png'}/>
-        <LoginInputComponent/>
+        <ImageWrapperComponent path={'./Assets/target.png'}/>
+        <LoginInputComponent 
+              label="Password"
+              name="password"
+              value={password}
+              onChange={this.onChange}/>
         <NavigateButtonComponent text="Entrar" navigate={routes.COUNTER} />
       </div>
     );
