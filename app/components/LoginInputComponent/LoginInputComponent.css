@@ -2,3 +2,7 @@
     margin-top: 2rem;
     width: 300px;
 }
+
+.eye {
+    cursor: 'pointer';
+}
