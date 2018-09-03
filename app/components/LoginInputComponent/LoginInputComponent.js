@@ -1,10 +1,11 @@
 import React from "react";
+import styles from "./LoginInputComponent.css";
 type Props= {};
 export default class LoginInputComponent extends React.Component{
     render(){
         return(
             <div>
-                <input placeholder="SENHA" type="password"> 
+                <input className={styles.input} placeholder="SENHA" type="password"> 
                 
                 </input>
             </div>
