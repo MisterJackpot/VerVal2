@@ -24,15 +24,11 @@ export default class CounterPage extends Component<Props> {
            });
       })
       .on("end", function(){
-        return new Promise(()=>{
-          result.splice(0,1)
-          result.splice(1,1)
-        }).then(()=>{
-          result.forEach(element => {
-            console.log(JSON.stringify(element))
-          }); 
+        result.splice(0,1)
+        result.splice(0,3)
+        result.forEach(element => {
+          console.log(JSON.stringify(element))
         })
-
       });
 
 

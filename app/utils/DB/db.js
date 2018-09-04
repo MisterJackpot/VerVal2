@@ -1,10 +1,17 @@
 var mysql = require('mysql');
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "senha",
-  database: "rastreamento"
-});
+const Connection = {
+  getConnection : () => {
 
-export default con;
+    const con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "senha",
+     database: "rastreamento"
+    });
+
+    return con
+  }
+}
+
+export default Connection;
