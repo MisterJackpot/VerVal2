@@ -11,13 +11,13 @@ import Senha from '../../utils/DB/DAO/Senha';
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
 
 
-type Props = {}; 
+type Props = {};
 
 export default class HomeContainer extends Component<Props> {
 
   constructor(props) {
     super(props);
-    
+
     this.validarSenha = this.validarSenha.bind(this);
     this.state = {
       password: '',
@@ -25,7 +25,6 @@ export default class HomeContainer extends Component<Props> {
   }
 
   validarSenha = () => {
-    let teste = 'aa';
     Senha.getSenha(function(result){
       console.log(result);
       console.log(this);
@@ -33,13 +32,17 @@ export default class HomeContainer extends Component<Props> {
     });
   }
 
-  onChange = event => {
+  onChange = (event) => {
+    this.setState({password: event.target.value});
+    console.log(event.target.value);
     //const { name, value } = event.target;
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
+  //  const target = event.target;
+  //  const name = target.name;
+    //const value = target.value;
     //console.log(event);
-    this.setState({ [name]: value });
+  //  this.setState({ [name]: value });
+//  this.setState({password : event.target.value});
+//    console.log(this.password);
   };
 
   render() {
@@ -47,11 +50,11 @@ export default class HomeContainer extends Component<Props> {
     return (
         <div className={styles.container} align="center" data-tid="container">
               <ImageWrapperComponent path={'./Assets/target.png'}/>
-              <InputComponent/> 
+              <InputComponent onChange={this.onChange}/>
               <NavigateButtonComponent text="Entrar" click={(e)=>this.validarSenha(e)}/>
+              
         </div>
     );
-  } 
-
+  }
   props: Props;
 }

@@ -8,12 +8,12 @@ export default class InputComponent extends React.Component{
 
     constructor(props) {
         super(props);
-    
+
         this.state = {
           passwordIsMasked: true,
         };
       }
-    
+
       togglePasswordMask = () => {
         this.setState(prevState => ({
           passwordIsMasked: !prevState.passwordIsMasked,
@@ -24,9 +24,10 @@ export default class InputComponent extends React.Component{
         const { passwordIsMasked } = this.state;
         return(
              <div className={styles.container} >
-                <input className={styles.input} placeholder="Senha"  
+                <input className={styles.input} placeholder="Senha"
                        type={passwordIsMasked ? 'password' : 'text'}
-                       value = {this.props.password} />
+                       value = {this.props.password}
+                       onChange= {this.props.onChange}/>
                 <button style={{marginTop:'12px'}} onClick={this.togglePasswordMask}>
                     troca tipo
                 </button>
