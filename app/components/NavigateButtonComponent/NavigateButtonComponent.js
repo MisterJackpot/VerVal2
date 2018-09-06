@@ -12,7 +12,7 @@ export default class NavigateButtonComponent extends React.Component{
         const {path} = this.props
         return(
             <div>
-                <button className={styles.buttonLogin} onClick={this.props.click} type="button" align="center">{this.props.text}</button>
+                <button className={styles.button} onClick={this.props.click} type="button" align="center">{this.props.text}</button>
             </div>
         )
     }
