@@ -7,24 +7,37 @@ import ImageWrapperComponent from '../../components/ImageWrapperComponent/ImageW
 import LoginInputComponent from '../../components/LoginInputComponent/LoginInputComponent';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
+import Senha from '../../utils/DB/DAO/Senha';
 
-type Props = {};
+type Props = {}; 
 
 export default class HomeContainer extends Component<Props> {
 
   constructor(props) {
     super(props);
-
+    
+    this.validarSenha = this.validarSenha.bind(this);
     this.state = {
       password: '',
     };
   }
 
-  onChange = event => {
-    const { name, value } = event.target;
+  validarSenha = () => {
+    let teste = 'aa';
+    Senha.getSenha(function(result){
+      console.log(this);
+      if(this.state.password == result) console.log("true");
+    });
+  }
 
+  onChange = event => {
+    //const { name, value } = event.target;
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    //console.log(event);
     this.setState({ [name]: value });
-};
+  };
 
   render() {
     const { password } = this.state;
@@ -32,11 +45,11 @@ export default class HomeContainer extends Component<Props> {
       <div className={styles.container} align="center" data-tid="container">
         <ImageWrapperComponent path={'./Assets/target.png'}/>
         <LoginInputComponent 
-              label="Password"
-              name="password"
-              value={password}
+              label={this.props.label}
+              name={this.props.name}
+              value={this.props.value}
               onChange={this.onChange}/>
-        <NavigateButtonComponent text="Entrar" navigate={routes.COUNTER} />
+        <button onClick={(e) => this.validarSenha(e)}/>
       </div>
     );
   }
