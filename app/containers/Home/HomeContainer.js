@@ -7,11 +7,8 @@ import ImageWrapperComponent from '../../components/ImageWrapperComponent/ImageW
 import LoginInputComponent from '../../components/LoginInputComponent/LoginInputComponent';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
-<<<<<<< HEAD
 import Senha from '../../utils/DB/DAO/Senha';
-=======
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
->>>>>>> 18a9df7e465b96e6d34c9cea630f94b9a39ebbe7
 
 type Props = {}; 
 

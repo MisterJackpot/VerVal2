@@ -2,10 +2,9 @@
   position: relative;
   padding-top: 12%;  
   text-align: center;
-  background-color: #fbfbfb ;
+  background-color: lavender;
   height: 100%;
 }
-
 .container h2 {
   font-size: 5rem;
 }
@@ -15,3 +14,4 @@
   font-size: 1.4rem;
   color: #d63715;
 }
+

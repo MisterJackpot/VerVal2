@@ -15,3 +15,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.eyeButton {
+  background-image: url("../../Assets/eyes.png");
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 32px;
+}
