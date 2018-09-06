@@ -40,7 +40,7 @@ export default class HomeContainer extends Component<Props> {
     const { password } = this.state;
     return (
         <div className={styles.container} align="center" data-tid="container">
-                <ImageWrapperComponent path={'./Assets/federages.png'}/>
+              <ImageWrapperComponent path={'./Assets/federages.png'}/>
               <InputComponent onChange={this.onChange}/>
               <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
         </div>
