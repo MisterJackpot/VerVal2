@@ -1,12 +1,15 @@
 .container {
   position: relative;
-  margin-top: 13rem;
+  padding-top: 12%;  
   text-align: center;
+  background-color: #fbfbfb ;
+  height: 100%;
 }
 
 .container h2 {
   font-size: 5rem;
 }
+
 
 .container a {
   font-size: 1.4rem;
