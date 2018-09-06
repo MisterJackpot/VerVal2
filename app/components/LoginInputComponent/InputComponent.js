@@ -25,7 +25,8 @@ export default class InputComponent extends React.Component{
         return(
              <div className={styles.container} >
                 <input className={styles.input} placeholder="Senha"  
-                       type={passwordIsMasked ? 'password' : 'text'} />
+                       type={passwordIsMasked ? 'password' : 'text'}
+                       value = {this.props.password} />
                 <button style={{marginTop:'12px'}} onClick={this.togglePasswordMask}>
                     troca tipo
                 </button>
