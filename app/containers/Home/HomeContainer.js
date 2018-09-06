@@ -7,11 +7,9 @@ import ImageWrapperComponent from '../../components/ImageWrapperComponent/ImageW
 import LoginInputComponent from '../../components/LoginInputComponent/LoginInputComponent';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
-<<<<<<< HEAD
 import Senha from '../../utils/DB/DAO/Senha';
-=======
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
->>>>>>> 18a9df7e465b96e6d34c9cea630f94b9a39ebbe7
+
 
 type Props = {}; 
 
@@ -29,6 +27,7 @@ export default class HomeContainer extends Component<Props> {
   validarSenha = () => {
     let teste = 'aa';
     Senha.getSenha(function(result){
+      console.log(result);
       console.log(this);
       if(this.state.password == result) console.log("true");
     });
@@ -49,7 +48,7 @@ export default class HomeContainer extends Component<Props> {
         <div className={styles.container} align="center" data-tid="container">
               <ImageWrapperComponent path={'./Assets/target.png'}/>
               <InputComponent/> 
-              <NavigateButtonComponent text="Entrar" navigate={routes.COUNTER} />
+              <NavigateButtonComponent text="Entrar" click={(e)=>this.validarSenha(e)}/>
         </div>
     );
   } 
