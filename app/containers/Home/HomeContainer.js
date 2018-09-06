@@ -7,6 +7,7 @@ import ImageWrapperComponent from '../../components/ImageWrapperComponent/ImageW
 import LoginInputComponent from '../../components/LoginInputComponent/LoginInputComponent';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
+import InputComponent from '../../components/LoginInputComponent/InputComponent';
 
 type Props = {};
 
@@ -29,17 +30,13 @@ export default class HomeContainer extends Component<Props> {
   render() {
     const { password } = this.state;
     return (
-      <div className={styles.container} align="center" data-tid="container">
-        <ImageWrapperComponent path={'./Assets/target.png'}/>
-        <LoginInputComponent 
-              label="Password"
-              name="password"
-              value={password}
-              onChange={this.onChange}/>
-        <NavigateButtonComponent text="Entrar" navigate={routes.COUNTER} />
-      </div>
+        <div className={styles.container} align="center" data-tid="container">
+              <ImageWrapperComponent path={'./Assets/target.png'}/>
+              <InputComponent/> 
+              <NavigateButtonComponent text="Entrar" navigate={routes.COUNTER} />
+          </div>
     );
-  }
+  } 
 
   props: Props;
 }
