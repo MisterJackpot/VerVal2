@@ -9,13 +9,10 @@ export default class NavigateButtonComponent extends React.Component{
     props: Props;
 
     render() {
-        const {path} = this.props;
-
+        const {path} = this.props
         return(
             <div>
-                <Link to={this.props.navigate}>
-                    <button className={styles.buttonLogin} type="button" align="center">{this.props.text}</button>
-                </Link>
+                <button className={styles.button} onClick={this.props.click} type="button" align="center">{this.props.text}</button>
             </div>
         )
     }

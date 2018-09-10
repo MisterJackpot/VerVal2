@@ -1,0 +1,24 @@
+.input {
+  font-size:20pt;
+  margin-top: 1rem;
+  border:none;
+  outline:none;
+  display:block;
+  background:transparent;
+  z-index:2;
+  border-bottom:1px solid #ccc;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.eyeButton {
+  background-image: url("../../Assets/eyes.png");
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 32px;
+}

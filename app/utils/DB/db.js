@@ -7,7 +7,7 @@ const Connection = {
       host: "localhost",
       user: "root",
       password: "senha",
-     database: "rastreamento"
+      database: "rastreamento"
     });
 
     return con
