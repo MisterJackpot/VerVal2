@@ -1,13 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import 'echarts-gl';
+import 'echarts';
 import ReactEcharts from 'echarts-for-react';
-import { data } from '../../utils/Data';
-import { kmeans } from '../../utils/kmeans';
+import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
+import {data} from '../../utils/Data';
+import {dataTest} from '../../utils/DataTest';
 
-export default class TestChart extends PureComponent<Props> {
+
+
+export default class Chart2D extends PureComponent<Props> {
   props: Props;
 
   constructor(props) {
@@ -19,7 +22,8 @@ export default class TestChart extends PureComponent<Props> {
           data: data,
           hoverAnimation: true
         }
-      ]
+      ],
+      symbolSize: 2.5
     };
   }
 
@@ -28,47 +32,30 @@ export default class TestChart extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = kmeans();
+    var seriesU = dataTest;
     this.setState({
       series: seriesU
     });
   }
 
   getOption = () => ({
-    title: {
-      text: 'Teste',
-      textStyle: {
-        color: '#D63715'
-      }
+    xAxis: {
+        type: 'value'
     },
     grid: {},
-    xAxis: {
-      type: 'value'
-      //min: 0
-    },
     yAxis: {
-      type: 'value'
-      //min: 0
+        type: 'value'
     },
-    series: this.state.series,
-    dataZoom: {
-      type: 'inside',
-      filterMode: 'filter'
-    },
-    color: [
-      '#c23531',
-      '#2f4554',
-      '#61a0a8',
-      '#d48265',
-      '#91c7ae',
-      '#749f83',
-      '#ca8622',
-      '#bda29a',
-      '#6e7074',
-      '#546570',
-      '#c4ccd3'
-    ]
-  });
+    axisType: 'category',
+    dataset: {
+        dimensions: [
+            'Income',
+            'Life Expectancy',
+        ],
+        source: dataTest
+      },
+    series: this.state.series
+  })
 
   render() {
     return (
