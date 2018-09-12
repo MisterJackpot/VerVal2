@@ -5,7 +5,7 @@ import MyChart from '../../components/MyCharts/MyChart';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import Amostra from '../../utils/DB/DAO/Amostra';
+import Amostra from '../../utils/DB/DAO/AmostraDAO';
 const csv = window.require('fast-csv');
 const fs = window.require('fs');
 
@@ -15,6 +15,7 @@ export default class CounterPage extends Component<Props> {
   props: Props;
 
   teste(file) {
+    
     if (file && file[0]) {
       var stream = fs.createReadStream(file[0].path);
       let result = [];
