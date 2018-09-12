@@ -5,7 +5,8 @@ import MyChart from '../../components/MyCharts/MyChart';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import Amostra from '../../utils/DB/DAO/Amostra';
+import AmostraBO from '../../utils/BO/Amostra';
+import Popup from 'react-popup';
 const csv = window.require('fast-csv');
 const fs = window.require('fs');
 
@@ -38,10 +39,10 @@ export default class CounterPage extends Component<Props> {
             element.push(d);
           });
           console.log(result[0]);
-          Amostra.insert(result).then(
+          AmostraBO.insert(result).then(
             () => {},
             err => {
-              alert(err.type + ' ' + err.data);
+              Popup.alert("DEU CERTO")
             }
           );
         });
@@ -55,6 +56,7 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
+        <Popup/>
         <Link to={routes.HOME}>
           <i className="fa fa-arrow-left fa-3x" />
         </Link>

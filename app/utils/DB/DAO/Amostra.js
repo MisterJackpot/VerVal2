@@ -7,7 +7,6 @@ const Amostra = {
       con.connect(function(err) {
         if (err) throw err;
         console.log('Connected!');
-        Amostra.getIds();
         var sql = 'INSERT INTO AMOSTRAS VALUES ?';
         var values = amostra;
         console.log(values);
@@ -43,7 +42,7 @@ const Amostra = {
           var sql = 'SELECT id FROM AMOSTRAS';
           con.query(sql,function(err, result){
             if(err) throw err;
-            console.log(result);
+            resolve(result);
           })
         })
     });
