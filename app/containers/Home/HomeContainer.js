@@ -18,7 +18,7 @@ export default class HomeContainer extends Component<Props> {
     super(props);
     this.state = {
       password: '',
-      loginPermit: true
+      loginPermit: false
     };
   }
 
