@@ -7,6 +7,7 @@ import LoginInputComponent from '../../components/LoginInputComponent/LoginInput
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
 import Senha from '../../utils/DB/DAO/Senha';
+import ListarAmostras from '../../utils/DB/DAO/ListarAmostras';
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
 import { Redirect } from 'react-router';
 
