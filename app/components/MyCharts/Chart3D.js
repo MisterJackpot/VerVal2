@@ -17,6 +17,11 @@ export default class Chart3D extends PureComponent<Props> {
     super(props);
     this.state = {
       series: [
+        {
+          type: 'scatter3D',
+          data: data,
+          hoverAnimation: true
+        }
       ],
      symbolSize: 2.5
     };
@@ -27,34 +32,60 @@ export default class Chart3D extends PureComponent<Props> {
   }
 
   update() {
+    var seriesU = dataTest;
+    this.setState({
+      series: seriesU
+    });
   }
 
-  getOption = () => ({
-    grid3D: {},
-    xAxis3D: {},
-    yAxis3D: {},
-    zAxis3D: {},
-    dataset: {
-        dimensions: [
-            'Income',
-            'Life Expectancy',
-            'Population'
-        ],
-        source: dataTest
-      },
-    series: [
-        {
-            type: 'scatter3D',
-            symbolSize: this.state.symbolSize,
-            encode: {
-                x: 'Country',
-                y: 'Life Expectancy',
-                z: 'Income'
-            }
-        }
-    ]
-  })
+  // getOption = () => ({
+  //   grid3D: {},
+  //   xAxis3D: {},
+  //   yAxis3D: {},
+  //   zAxis3D: {},
+  //   dataset: {
+  //       dimensions: [
+  //           'Income',
+  //           'Life Expectancy',
+  //           'Population'
+  //       ],
+  //       source: dataTest
+  //     },
+  //   series: [
+  //       {
+  //           type: 'scatter3D',
+  //           symbolSize: this.state.symbolSize,
+  //           encode: {
+  //               x: 'Country',
+  //               y: 'Life Expectancy',
+  //               z: 'Income'
+  //           }
+  //       }
+  //   ]
+  // })
 
+  getOption = () => ({
+      grid3D: {},
+      xAxis3D: {
+        type: 'value'
+      },
+      yAxis3D: {
+        type: 'value'
+      },
+      zAxis3D: {
+        type: 'value'
+      },
+      axisType: 'category',
+      dataset: {
+          dimensions: [
+              'x',
+              'y',
+              'z',
+          ],
+          source: dataTest
+      },
+      series: this.state.series
+  })
   render() {
     return (
       <div className={styles.opa}>

@@ -8,7 +8,7 @@ export default class MyChartContainer extends React.Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-          typeChart: false
+          typeChart: true
         };
       }
     
@@ -18,18 +18,20 @@ export default class MyChartContainer extends React.Component<Props> {
       };
     
     render(){
-    const { typeChart } = this.state;
-        if(typeChart) {
-          return <Chart2D/>
-        }
-        else {
-            return <Chart3D/>
-        }       
+        const typeChart = this.state.typeChart;
         return (
-            <div style={{width:'100%', height:'100%'}}>
-            <button onClick={this.onClick}>
-                eaea
-            </button>
-            </div>
+        <div style={{width:'100%', height:'100%'}}>
+        <div align='center'>
+         <button onClick={this.onClick} style={{width:'100px', height:'25px'}}>
+            eaea
+        </button>
+        </div>
+         {typeChart ? (
+        <Chart2D/>
+        ) : (
+        <Chart3D />
+        )} 
+
+        </div>
         )}
 }
