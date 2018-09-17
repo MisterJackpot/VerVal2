@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListaAmostrasRender from '../../components/ListaAmostrasComponent/ListaAmostrasRender';
 
 type Props = {};
 
@@ -8,9 +9,9 @@ export default class ListaAmostrasContainer extends Component<Props> {
     super(props);
   }
 
-  render(){
-    return(
-      <h1>OPA</h1>
-    )
+  render() {
+    return (
+      <ListaAmostrasRender listItems = {["1","2","3"]}/>
+    );
   }
 }
