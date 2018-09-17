@@ -6,9 +6,11 @@ import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import AmostraBO from '../../utils/BO/Amostra';
-import Popup from 'react-popup';
 const csv = window.require('fast-csv');
 const fs = window.require('fs');
+import Alert from 'react-s-alert';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 type Props = {};
 
@@ -42,25 +44,29 @@ export default class CounterPage extends Component<Props> {
           AmostraBO.insert(result).then(
             () => {},
             err => {
-              Popup.alert("DEU CERTO")
+              Alert.error("Amostras repitidas, log salvo em erro.txt", {
+                position: 'top',
+                effect: 'slide',
+                timeout: 'none'
+              });
             }
           );
         });
 
       stream.pipe(csvStream);
-    }else{
-      alert("Formato de arquivo invalido");
+    } else {
+      alert('Formato de arquivo invalido');
     }
   }
 
   render() {
     return (
       <div>
-        <Popup/>
         <Link to={routes.HOME}>
           <i className="fa fa-arrow-left fa-3x" />
         </Link>
         <UploadCsv acceptedFunction={this.teste} />
+        <Alert stack={true} />
       </div>
     );
   }
