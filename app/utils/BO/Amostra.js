@@ -27,13 +27,12 @@ const AmostraBO = {
             element.push(d);
           });
           AmostraBO.insert(result).then(
-            () => {},
+            result => {resolve(result)},
             err => {
               error(err);
             }
           );
         });
-
       stream.pipe(csvStream);
     });
   },
@@ -50,10 +49,12 @@ const AmostraBO = {
             return (id.id = element[0]);
           });
 
-          if (aux != undefined) errorList.push(aux.id);
+          if (aux != void 0) errorList.push(aux.id);
         });
 
-        if (errorList != []) {
+        console.log(errorList)
+        console.log(amostra)
+        if (errorList.length > 0) {
           let textError = 'Amostras já existentes:\n';
           errorList.forEach(element => {
             textError = textError.concat(element + '\n');
@@ -69,12 +70,11 @@ const AmostraBO = {
           const f = './log/AmostrasRepetidas ' + date + '.txt';
           const file = fs.writeFile(f, textError, err => {
             if (err) throw err;
-            console.log(file);
           });
           error(f);
         } else {
           Amostra.insert(amostra).then(
-            () => {},
+            result => {resolve(result)},
             err => {
               error(err);
             }

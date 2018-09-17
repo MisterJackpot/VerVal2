@@ -16,7 +16,13 @@ export default class CounterPage extends Component<Props> {
   teste(file) {
     if (file && file[0]) {
           AmostraBO.readCSV(file).then(
-            () => {},
+            result => {
+              Alert.success(result + " amostras inseridas.", {
+                position: 'top', 
+                effect: 'slide', 
+                timeout: 5000
+              })
+            },
             err => {
               Alert.error("Amostras repetidas, log salvo em " + err, {
                 position: 'top',

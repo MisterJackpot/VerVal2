@@ -14,6 +14,7 @@ const Amostra = {
           .query(sql, [values], function(err, result) {
             if (err) throw err;
             console.log('Number of records inserted: ' + result.affectedRows);
+            resolve(result.affectedRows)
           })
           .on('error', err => {
               if(err.code == 'ER_DUP_ENTRY'){
