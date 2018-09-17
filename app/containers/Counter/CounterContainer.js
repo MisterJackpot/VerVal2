@@ -6,11 +6,7 @@ import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import AmostraBO from '../../utils/BO/Amostra';
-const csv = window.require('fast-csv');
-const fs = window.require('fs');
 import Alert from 'react-s-alert';
-import 'react-s-alert/dist/s-alert-default.css';
-import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 type Props = {};
 
@@ -19,43 +15,23 @@ export default class CounterPage extends Component<Props> {
 
   teste(file) {
     if (file && file[0]) {
-      var stream = fs.createReadStream(file[0].path);
-      let result = [];
-      var csvStream = csv()
-        .on('data', function(data) {
-          data.forEach((element, index) => {
-            if (!result[index]) {
-              result[index] = [];
-            }
-            if (data[0] != '' && index >= 1) {
-              result[index].push(parseFloat(element.replace(',', '.')));
-            } else result[index].push(element);
-          });
-        })
-        .on('end', function() {
-          result.splice(0, 1);
-          console.log(result[3]);
-          result.forEach(element => {
-            element.splice(2, 1);
-            var d = new Date();
-            element.push(d);
-          });
-          console.log(result[0]);
-          AmostraBO.insert(result).then(
+          AmostraBO.readCSV(file).then(
             () => {},
             err => {
-              Alert.error("Amostras repitidas, log salvo em erro.txt", {
+              Alert.error("Amostras repetidas, log salvo em " + err, {
                 position: 'top',
                 effect: 'slide',
-                timeout: 'none'
+                timeout: 10000
               });
             }
           );
-        });
-
-      stream.pipe(csvStream);
+        
     } else {
-      alert('Formato de arquivo invalido');
+      Alert.warning('Formato de arquivo invalido',{
+        position: 'top',
+        effect: 'slide',
+        timeout: 5000
+      });
     }
   }
 
@@ -66,7 +42,6 @@ export default class CounterPage extends Component<Props> {
           <i className="fa fa-arrow-left fa-3x" />
         </Link>
         <UploadCsv acceptedFunction={this.teste} />
-        <Alert stack={true} />
       </div>
     );
   }

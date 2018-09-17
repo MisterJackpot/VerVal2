@@ -38,3 +38,7 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.divApp {
+  height: 100%;
+}
