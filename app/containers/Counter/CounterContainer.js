@@ -5,9 +5,8 @@ import MyChart from '../../components/MyCharts/MyChart';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import Amostra from '../../utils/DB/DAO/Amostra';
-const csv = window.require('fast-csv');
-const fs = window.require('fs');
+import AmostraBO from '../../utils/BO/Amostra';
+import Alert from 'react-s-alert';
 
 type Props = {};
 
@@ -16,39 +15,29 @@ export default class CounterPage extends Component<Props> {
 
   teste(file) {
     if (file && file[0]) {
-      var stream = fs.createReadStream(file[0].path);
-      let result = [];
-      var csvStream = csv()
-        .on('data', function(data) {
-          data.forEach((element, index) => {
-            if (!result[index]) {
-              result[index] = [];
-            }
-            if (data[0] != '' && index >= 1) {
-              result[index].push(parseFloat(element.replace(',', '.')));
-            } else result[index].push(element);
-          });
-        })
-        .on('end', function() {
-          result.splice(0, 1);
-          console.log(result[3]);
-          result.forEach(element => {
-            element.splice(2, 1);
-            var d = new Date();
-            element.push(d);
-          });
-          console.log(result[0]);
-          Amostra.insert(result).then(
-            () => {},
+          AmostraBO.readCSV(file).then(
+            result => {
+              Alert.success(result + " amostras inseridas.", {
+                position: 'top', 
+                effect: 'slide', 
+                timeout: 5000
+              })
+            },
             err => {
-              alert(err.type + ' ' + err.data);
+              Alert.error("Amostras repetidas, log salvo em " + err, {
+                position: 'top',
+                effect: 'slide',
+                timeout: 10000
+              });
             }
           );
-        });
-
-      stream.pipe(csvStream);
-    }else{
-      alert("Formato de arquivo invalido");
+        
+    } else {
+      Alert.warning('Formato de arquivo invalido',{
+        position: 'top',
+        effect: 'slide',
+        timeout: 5000
+      });
     }
   }
 
