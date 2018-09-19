@@ -1,4 +1,4 @@
-import Amostra from './../DB/DAO/Amostra';
+import Amostra from '../DB/DAO/AmostraDAO';
 import { element } from 'prop-types';
 const fs = require('fs');
 const csv = require('fast-csv');

@@ -4,7 +4,7 @@
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import "~react-s-alert/dist/s-alert-default.css";
-@import "~react-s-alert/dist/s-alert-css-effects/slide.css";
+@import "~react-s-alert/dist/s-alert-css-effects/stackslide.css";
 
 body {
   position: relative;
