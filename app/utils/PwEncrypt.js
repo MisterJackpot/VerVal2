@@ -1,6 +1,6 @@
+const bcrypt = require('bcryptjs');
+
 module.exports = {
-    
-    const bcrypt = require('bcryptjs');
 
     encryptPw: function(pwString){
         try{
