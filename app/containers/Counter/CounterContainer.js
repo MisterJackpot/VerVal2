@@ -5,60 +5,50 @@ import MyChart from '../../components/MyCharts/Chart3D';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import Amostra from '../../utils/DB/DAO/Amostra';
-const csv = window.require('fast-csv');
-const fs = window.require('fs');
+import AmostraBO from '../../utils/BO/AmostraBO';
+import Alert from 'react-s-alert';
 
 type Props = {};
 
 export default class CounterPage extends Component<Props> {
   props: Props;
 
-  teste(file) {
+  insereAmostras(file) {
+    
     if (file && file[0]) {
-      var stream = fs.createReadStream(file[0].path);
-      let result = [];
-      var csvStream = csv()
-        .on('data', function(data) {
-          data.forEach((element, index) => {
-            if (!result[index]) {
-              result[index] = [];
-            }
-            if (data[0] != '' && index >= 1) {
-              result[index].push(parseFloat(element.replace(',', '.')));
-            } else result[index].push(element);
+      AmostraBO.readCSV(file).then(
+        result => {
+          Alert.success(result + " amostras inseridas.", {
+            position: 'top', 
+            effect: 'stackslide', 
+            timeout: 5000
+          })
+        },
+        err => {
+          Alert.error("Amostras repetidas, log salvo em " + err, {
+            position: 'top',
+            effect: 'stackslide',
+            timeout: 10000
           });
-        })
-        .on('end', function() {
-          result.splice(0, 1);
-          console.log(result[3]);
-          result.forEach(element => {
-            element.splice(2, 1);
-            var d = new Date();
-            element.push(d);
-          });
-          console.log(result[0]);
-          Amostra.insert(result).then(
-            () => {},
-            err => {
-              alert(err.type + ' ' + err.data);
-            }
-          );
-        });
-
-      stream.pipe(csvStream);
-    }else{
-      alert("Formato de arquivo invalido");
-    }
-  }
-
+        }
+      );
+    
+} else {
+  Alert.warning('Formato de arquivo invalido',{
+    position: 'top',
+    effect: 'stackslide',
+    timeout: 5000
+  });
+}
+}
+  
   render() {
     return (
       <div>
         <Link to={routes.HOME}>
           <i className="fa fa-arrow-left fa-3x" />
         </Link>
-        <UploadCsv acceptedFunction={this.teste} />
+        <UploadCsv acceptedFunction={this.insereAmostras} />
       </div>
     );
   }
