@@ -1,26 +1,23 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
-import 'echarts-gl';
+import 'echarts';
 import ReactEcharts from 'echarts-for-react';
-import { data } from '../../utils/Data';
-import { kmeans } from '../../utils/kmeans';
+import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
+import {data} from '../../utils/Data';
+import {data3D} from '../../utils/DataTest';
 
-export default class TestChart extends PureComponent<Props> {
+
+
+export default class Chart3D extends PureComponent<Props> {
   props: Props;
 
   constructor(props) {
     super(props);
     this.state = {
-      series: [
-        {
-          type: 'scatter',
-          data: data,
-          hoverAnimation: true
-        }
-      ]
-    };
+      symbolSize: 5
+    }
   }
 
   componentDidMount() {
@@ -28,48 +25,40 @@ export default class TestChart extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = kmeans();
-    this.setState({
-      series: seriesU
-    });
   }
 
-  getOption = () => ({
-    title: {
-      text: 'Teste',
-      textStyle: {
-        color: '#D63715'
-      }
-    },
-    grid: {},
-    xAxis: {
-      type: 'value'
-      //min: 0
-    },
-    yAxis: {
-      type: 'value'
-      //min: 0
-    },
-    series: this.state.series,
-    dataZoom: {
-      type: 'inside',
-      filterMode: 'filter'
-    },
-    color: [
-      '#c23531',
-      '#2f4554',
-      '#61a0a8',
-      '#d48265',
-      '#91c7ae',
-      '#749f83',
-      '#ca8622',
-      '#bda29a',
-      '#6e7074',
-      '#546570',
-      '#c4ccd3'
-    ]
-  });
 
+  getOption = () => ({
+    grid3D: {},
+    xAxis3D: {
+      type: 'value'
+    },
+    yAxis3D: {
+      type: 'value'
+    },
+    zAxis3D: {
+      type: 'value'
+    },
+    dataset: {
+        dimensions: [
+            'x',
+            'y',
+            'z',
+        ],
+        source: this.props.list
+    },
+    series: [
+        {
+            type: 'scatter3D',
+            symbolSize: this.state.symbolSize,
+            encode: {
+                x: 'x',
+                y: 'y',
+                z: 'z',
+            }
+        }
+    ]
+  })
   render() {
     return (
       <div className={styles.opa}>
