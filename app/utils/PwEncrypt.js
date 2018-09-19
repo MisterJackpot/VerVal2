@@ -1,8 +1,9 @@
 module.exports = {
+    
+    const bcrypt = require('bcryptjs');
 
     encryptPw: function(pwString){
         try{
-            const bcrypt = require('bcryptjs');
             const salt = bcrypt.genSaltSync(10);
             const hashedPw = bcrypt.hashSync(pwString, salt);
             return hashedPw;
@@ -14,14 +15,7 @@ module.exports = {
 
     checkStringHash: function(pwString, hashedPw){
         try{
-            const bcrypt = require('bcryptjs');
-            if(bcrypt.compareSync(pwString,hashedPw))
-            {
-                return true;
-            }
-            else{
-                return false;
-            }
+            return(bcrypt.compareSync(pwString,hashedPw));
         }catch(e){
             throw new Error(e);
         }
