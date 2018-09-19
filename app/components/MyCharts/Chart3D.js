@@ -6,7 +6,7 @@ import ReactEcharts from 'echarts-for-react';
 import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
 import {data} from '../../utils/Data';
-import {dataTest} from '../../utils/DataTest';
+import {data3D} from '../../utils/DataTest';
 
 
 
@@ -16,15 +16,8 @@ export default class Chart3D extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      series: [
-        {
-          type: 'scatter3D',
-          data: data,
-          hoverAnimation: true
-        }
-      ],
-     symbolSize: 2.5
-    };
+      symbolSize: 5
+    }
   }
 
   componentDidMount() {
@@ -32,59 +25,39 @@ export default class Chart3D extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = dataTest;
-    this.setState({
-      series: seriesU
-    });
   }
 
-  // getOption = () => ({
-  //   grid3D: {},
-  //   xAxis3D: {},
-  //   yAxis3D: {},
-  //   zAxis3D: {},
-  //   dataset: {
-  //       dimensions: [
-  //           'Income',
-  //           'Life Expectancy',
-  //           'Population'
-  //       ],
-  //       source: dataTest
-  //     },
-  //   series: [
-  //       {
-  //           type: 'scatter3D',
-  //           symbolSize: this.state.symbolSize,
-  //           encode: {
-  //               x: 'Country',
-  //               y: 'Life Expectancy',
-  //               z: 'Income'
-  //           }
-  //       }
-  //   ]
-  // })
 
   getOption = () => ({
-      grid3D: {},
-      xAxis3D: {
-        type: 'value'
-      },
-      yAxis3D: {
-        type: 'value'
-      },
-      zAxis3D: {
-        type: 'value'
-      },
-      axisType: 'category',
-      dataset: {
-          dimensions: [
-              'x',
-              'y',
-              'z',
-          ],
-          source: dataTest
-      },
-      series: this.state.series
+    grid3D: {},
+    xAxis3D: {
+      type: 'value'
+    },
+    yAxis3D: {
+      type: 'value'
+    },
+    zAxis3D: {
+      type: 'value'
+    },
+    dataset: {
+        dimensions: [
+            'x',
+            'y',
+            'z',
+        ],
+        source: this.props.list
+    },
+    series: [
+        {
+            type: 'scatter3D',
+            symbolSize: this.state.symbolSize,
+            encode: {
+                x: 'x',
+                y: 'y',
+                z: 'z',
+            }
+        }
+    ]
   })
   render() {
     return (

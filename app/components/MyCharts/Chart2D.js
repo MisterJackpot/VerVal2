@@ -52,7 +52,7 @@ export default class Chart2D extends PureComponent<Props> {
             'Income',
             'Life Expectancy',
         ],
-        source: dataTest
+        source: this.props.list
       },
     series: this.state.series
   })
