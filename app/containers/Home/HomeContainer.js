@@ -9,6 +9,7 @@ import NavigateButtonComponent from '../../components/NavigateButtonComponent/Na
 import { validarSenhaLogin } from '../../utils/BO/SenhaBO';
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
 import { Redirect } from 'react-router';
+import Alert from 'react-s-alert';
 
 type Props = {};
 
@@ -24,8 +25,15 @@ export default class HomeContainer extends Component<Props> {
 
   validarSenha = () => {
     validarSenhaLogin(this.state.password).then(result =>{
-      if(!result){
-        alert("Senha inválida.");
+      if(result){
+        Alert.closeAll();
+      }
+      else if(!result){
+        Alert.error("Senha inválida.",{
+          position: 'top',
+          effect: 'stackslide',
+          timeout: 7500
+        });
       }
       this.setState({loginPermit:result});
     });
