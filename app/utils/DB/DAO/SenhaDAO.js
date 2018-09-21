@@ -2,7 +2,7 @@ import Connection from './../db';
 
 const Senha = {
 
-    getSenha: async (callback) => {
+    getSenha: (callback) => {
         return new Promise((resolve, error) => {
 
           const con = Connection.getConnection();   
@@ -16,7 +16,8 @@ const Senha = {
               if(err) {
                 throw err;
               }
-              r = result[0].senha;
+              r = result[1].senha;
+              console.log(result);
               resolve(r);
               
             }).on('error', err => {

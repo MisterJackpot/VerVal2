@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PCAButton.css";
-import Amostra from "../../utils/BO/AmostraBO.js";
+import Amostra from "../../utils/DB/DAO/AmostraDAO";
+import Senha from "../../utils/DB/DAO/SenhaDAO";
 type Props = {};
 	
 export default class PCAButton extends React.Component{
@@ -9,8 +10,15 @@ export default class PCAButton extends React.Component{
 		super(props);
 		this.handleClick = this.test.bind(this);
 	}
-    test(){
-		//console.log("AA");
+    test = async () => {
+		let promise = Amostra.getAll();
+		const amostras = await promise
+		//console.log(senha[0]);
+		
+		for(var x in amostras[0])
+			console.log(amostras[0][x]);//Ele consegue capturar todos os atributos de todas as amostras disponíveis 
+			
+		console.log("AA");
 	const PCA = require('ml-pca');
 	const dataset = require('ml-dataset-iris').getNumbers();
 	

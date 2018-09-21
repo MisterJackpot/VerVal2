@@ -47,6 +47,21 @@ const Amostra = {
           })
         })
     });
+  },
+
+  getAll: () => {
+    return new Promise((resolve,error) => {
+        const con = Connection.getConnection();
+        con.connect(function(err) {
+          if (err) throw err;
+          console.log('Connected!');
+          var sql = 'SELECT * FROM AMOSTRAS';
+          con.query(sql,function(err, result){
+            if(err) throw err;
+            resolve(result);
+          })
+        })
+    });
   }
 };
 
