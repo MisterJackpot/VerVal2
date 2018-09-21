@@ -10,6 +10,7 @@ import { validarSenhaLogin } from '../../utils/BO/SenhaBO';
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
 import { Redirect } from 'react-router';
 import Alert from 'react-s-alert';
+import PCAButton from '../../components/PCAButton/PCAButton.js'
 
 type Props = {};
 
@@ -53,7 +54,10 @@ export default class HomeContainer extends Component<Props> {
             <ImageWrapperComponent path={'./Assets/federages.png'}/>
             <InputComponent onChange={this.onChange}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
-        </div>
+			<PCAButton>
+			</PCAButton>
+		
+		</div>
     );
   }
   props: Props;

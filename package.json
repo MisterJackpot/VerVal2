@@ -216,6 +216,8 @@
     "electron-debug": "^2.0.0",
     "fast-csv": "^2.4.1",
     "history": "^4.7.2",
+    "ml-dataset-iris": "^1.0.0",
+    "ml-pca": "^2.1.0",
     "mysql": "^2.16.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
