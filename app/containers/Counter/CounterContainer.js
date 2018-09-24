@@ -45,7 +45,7 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
-        <Link to={routes.HOME}>
+        <Link to={routes.MAINPAGE}>
           <i className="fa fa-arrow-left fa-3x" />
         </Link>
         <UploadCsv acceptedFunction={this.insereAmostras} />

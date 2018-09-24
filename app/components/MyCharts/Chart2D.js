@@ -59,7 +59,7 @@ export default class Chart2D extends PureComponent<Props> {
 
   render() {
     return (
-      <div className={styles.opa}>
+      <div className={styles.opa2D}>
         <div className={styles.backButton} data-tid="backButton">
           <Link to={routes.HOME}>
             <i className="fa fa-arrow-left fa-3x" />

@@ -7,17 +7,28 @@ export default class FilteredList extends Component<Props> {
     super(props);
     this.state = {
       initialItems: [
-        'Apples',
-        'Broccoli',
-        'Chicken',
-        'Bacon',
-        'Eggs',
-        'Salmon',
-        'Granola',
-        'Bananas',
-        'Beer',
-        'Wine',
-        'Yogurt'
+        'Amostra 1',
+        'Amostra 2',
+        'Amostra 3',
+        'Amostra 4',
+        'Amostra 5',
+        'Amostra 6',
+        'Amostra 7',
+        'Amostra 8',
+        'Amostra 9',
+        'Amostra 10',
+        'Amostra 11',
+        'Amostra 11232',
+        'Amostra 2123',
+        'Amostra 3213',
+        'Amostra 4123',
+        'Amostra 5123',
+        'Amostra 6213',
+        'Amostra 723',
+        'Amostra 8213',
+        'Amostra 9213',
+        'Amostra 11230',
+        'Amostra 12321'
       ],
       items: []
     };
