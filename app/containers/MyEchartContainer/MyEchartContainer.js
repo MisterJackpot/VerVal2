@@ -21,24 +21,22 @@ export default class MyChartContainer extends React.Component<Props> {
     console.log(this.state);
   };
 
-  onClick2 = () => {
-    this.setState({ csv: !this.state.csv });
-    console.log(this.state);
-  };
+  // onClick2 = () => {
+  //   this.setState({ csv: !this.state.csv });
+  //   console.log(this.state);
+  // };
 
   render() {
     const typeChart = this.state.typeChart;
-    const csv = this.state.csv;
-    if(csv) {
-      return <Redirect push={true} to='COUNTER'/>
-    }
+    // const csv = this.state.csv;
+    // if(csv) {
+    //   return <Redirect push={true} to='COUNTER'/>
+    // }
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <div align="center">
-          <div>
           <NavigateButtonComponent click={this.onClick} text="Trocar Gráfico" />
-          <NavigateButtonComponent click={this.onClick2} text="CSV"/>
-          </div>
+          {/* <NavigateButtonComponent click={this.onClick2} text="CSV"/> */}
         </div>
         {typeChart ? <Chart2D list={data3D} /> : <Chart3D list={data3D} />}
       </div>

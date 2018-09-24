@@ -63,9 +63,6 @@ export default class Chart3D extends PureComponent<Props> {
     return (
       <div className={styles.opa3D}>
         <div className={styles.backButton} data-tid="backButton">
-          <Link to={routes.HOME}>
-            <i className="fa fa-arrow-left fa-3x" />
-          </Link>
         </div>
         <div className={styles.parent}>
           <ReactEcharts option={this.getOption()} style={{ height: '100%' }} />
