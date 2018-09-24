@@ -14,16 +14,19 @@ export default class PCAButton extends React.Component{
 		let promise = Amostra.getAll();
 		const amostras = await promise
 		//console.log(senha[0]);
-		console.log(amostras[0][2]);
+	//	console.log(amostras[0][2]);
 //		for(var x in amostras[0])
 //			console.log(amostras[0][x]);//Ele consegue capturar todos os atributos de todas as amostras disponíveis 
 	const PCA = require('ml-pca');
-	const data = amostras[0].slice(0,2);
+	const data = JSON.parse(JSON.stringify(amostras));
+	for(var instance in amostras){
+			console.log(instance.toString);
+	}
 	//console.log(data);
 		// // dataset is a two-dimensional array where rows represent the samples and columns the features
 		const pca = new PCA(amostras);
 //		console.log(dataset);
-		console.log(pca.getExplainedVariance());
+		//console.log(pca.getExplainedVariance());
 	}
 	
     render() {
