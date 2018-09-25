@@ -46,12 +46,12 @@ export default class HomeContainer extends Component<Props> {
   render() {
     const { password,loginPermit } = this.state;
     if(loginPermit) {
-      return <Redirect push={true} to= 'COUNTER'/>
+      return <Redirect push={true} to= 'MAINPAGE'/>
     }
     return (
         <div className={styles.container} align="center" data-tid="container">
             <ImageWrapperComponent path={'./Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange}/> 
+            <InputComponent onChange={this.onChange}/>
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
         </div>
     );

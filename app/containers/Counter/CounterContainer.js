@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import MyChart from '../../components/MyCharts/MyChart';
+import MyChart from '../../components/MyCharts/Chart3D';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
@@ -45,7 +45,7 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
-        <Link to={routes.HOME}>
+        <Link to={routes.MAINPAGE}>
           <i className="fa fa-arrow-left fa-3x" />
         </Link>
         <UploadCsv acceptedFunction={this.insereAmostras} />
