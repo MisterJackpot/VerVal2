@@ -18,9 +18,13 @@ export default class Chart2D extends PureComponent<Props> {
     this.state = {
       series: [
         {
+          name: 'Amostra',
           type: 'scatter',
-          data: data,
-          hoverAnimation: true
+          data: dataTest,
+          encode: {
+            x: 'x',
+            y: 'z',
+          },
         }
       ],
       symbolSize: 2.5
@@ -47,10 +51,14 @@ export default class Chart2D extends PureComponent<Props> {
         type: 'value'
     },
     axisType: 'category',
+    tooltip: {
+      trigger: 'item'
+     },
     dataset: {
         dimensions: [
-            'Income',
-            'Life Expectancy',
+            'x',
+            'y',
+            'z'
         ],
         source: this.props.list
       },
@@ -63,7 +71,7 @@ export default class Chart2D extends PureComponent<Props> {
         <div className={styles.backButton} data-tid="backButton">
         </div>
         <div className={styles.parent}>
-          <ReactEcharts option={this.getOption()} style={{ height: '100%' }} />
+          <ReactEcharts option={this.getOption()} style={{ height: '100%' }}/>
         </div>
       </div>
     );
