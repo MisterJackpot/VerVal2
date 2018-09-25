@@ -21,6 +21,9 @@ export default class MainPage extends Component<Props> {
            <div className={styles.rightContainer}>
               <ListContainer/>
           </div>
+          <div style={{marginBottom: '10rem'}}>
+              <CounterContainer/>
+          </div>
       </div>
       </div>
 

@@ -7,11 +7,24 @@ import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import AmostraBO from '../../utils/BO/AmostraBO';
 import Alert from 'react-s-alert';
+import styles from './Modal.css';
 
 type Props = {};
 
 export default class CounterPage extends Component<Props> {
   props: Props;
+
+  state = { show: false }
+  
+  showModal = () => {
+    this.setState({ show: true });
+    console.log(this.state)
+  }
+  
+  hideModal = () => {
+    this.setState({ show: false });
+    console.log(this.state)
+  }
 
   insereAmostras(file) {
     
@@ -45,11 +58,27 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
-        <Link to={routes.MAINPAGE}>
-          <i className="fa fa-arrow-left fa-3x" />
-        </Link>
-        <UploadCsv acceptedFunction={this.insereAmostras} />
+        <button type='button' onClick={this.showModal}>Open</button>
+        <Modal show={this.state.show} handleClose={this.hideModal} >
+          <UploadCsv acceptedFunction={this.insereAmostras} />
+        </Modal>
       </div>
     );
   }
 }
+
+const Modal = ({ handleClose, show, children }) => {
+  
+  return (
+      <div className={(show ? styles.displayblock : styles.displaynone)}>
+      <section className={styles.modalmain}>
+        {children}
+        <button
+          onClick={handleClose}
+        >
+          Close
+        </button>
+      </section>
+    </div>
+  );
+};

@@ -6,20 +6,23 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
 }
-.modal-main {
+.modalmain {
   position:fixed;
-  background: white;
-  width: 80%;
+  background: wheat;
+  width: 15%;
+  border-radius: 2%;
+  align-content: center;
   height: auto;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
 }
-  .display-block {
+.displayblock {
     display: block;
   }
   
-  .display-none {
+.displaynone {
     display: none;
   }
+  
   
