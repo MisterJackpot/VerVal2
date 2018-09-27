@@ -23,7 +23,7 @@ export default class Chart2D extends PureComponent<Props> {
           data: dataTest,
           encode: {
             x: 'x',
-            y: 'z',
+            y: 'y',
           },
         }
       ],
@@ -52,7 +52,8 @@ export default class Chart2D extends PureComponent<Props> {
     },
     axisType: 'category',
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
+      enterable: true
      },
     dataset: {
         dimensions: [
