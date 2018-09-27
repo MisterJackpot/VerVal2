@@ -58,7 +58,7 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
-        <button type='button' onClick={this.showModal}>Open</button>
+        <button type='button' className={styles.showmodal} onClick={this.showModal}>+</button>
         <Modal show={this.state.show} handleClose={this.hideModal} >
           <UploadCsv acceptedFunction={this.insereAmostras} />
         </Modal>
@@ -76,7 +76,7 @@ const Modal = ({ handleClose, show, children }) => {
         <button
           onClick={handleClose}
         >
-          Close
+          Fechar
         </button>
       </section>
     </div>

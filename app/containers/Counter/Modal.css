@@ -8,7 +8,7 @@
 }
 .modalmain {
   position:fixed;
-  background: wheat;
+  background: whitesmoke;
   width: 15%;
   border-radius: 2%;
   align-content: center;
@@ -17,6 +17,12 @@
   left:50%;
   transform: translate(-50%,-50%);
 }
+
+.modalmain button{
+  background-color: rgb(7, 77, 34);
+  color: #ffffff;
+  border: transparent;
+}
 .displayblock {
     display: block;
   }
@@ -24,5 +30,13 @@
 .displaynone {
     display: none;
   }
+
+.showmodal{
+    background-color: rgb(7, 77, 34);
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: bold;
+    border: transparent;
+}
   
   
