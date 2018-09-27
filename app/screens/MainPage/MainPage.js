@@ -14,17 +14,15 @@ export default class MainPage extends Component<Props> {
   render() {
     return (
       <div className={styles.container}>
-      <div className={styles.columnContainer}>
-            <div className={styles.leftContainer}>
-              <MyChartContainer/>
+        <div className={styles.columnContainer}>
+              <div className={styles.leftContainer}>
+                <MyChartContainer/>
+              </div>
+            <div className={styles.rightContainer}>
+                <ListContainer/>
+                <CounterContainer/>
             </div>
-           <div className={styles.rightContainer}>
-              <ListContainer/>
-          </div>
-          <div style={{marginBottom: '10rem'}}>
-              <CounterContainer/>
-          </div>
-      </div>
+        </div>
       </div>
 
   )}

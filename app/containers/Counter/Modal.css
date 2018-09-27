@@ -37,6 +37,11 @@
     border-radius: 50%;
     font-weight: bold;
     border: transparent;
+    position: absolute;
+    right: 10%;
+    top: 94%;
+    width: 2.5em;
+    height: 2.5em;
 }
   
   
