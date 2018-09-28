@@ -6,7 +6,7 @@ export default class List extends Component<Props> {
 
   render() {
     return (
-      <div style={{overflowY: 'scroll', maxHeight:'50rem'}}>
+      <div className={styles.list}>
         <ul className={styles.ul}>
           {this.props.items.map(item => (
             <li className={styles.li} key={item}>

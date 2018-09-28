@@ -1,29 +1,40 @@
 .mount-point {
-  padding: 60px;
-  max-width: 800px;
-  margin: auto;
-  max-height: 10px;
-  height: 10px;
+padding: 10%;
+  
 }
 
 .input {
   line-height: 2;
-  font-size: 18px;
-  height: auto;
-  padding-left: 20px;
-  margin-left: 7.8%;
-  width: 87.5%;
+  font-size: 1.2rem;
+  width: 100%;
+  padding-left: 1rem;
+  box-sizing: border-box;
 }
 
 .ul {
-  margin: 0;
+  padding: 0;
+  width: inherit;
+  margin:0;
+  margin-top: 1rem;
+  position: absolute;
+  max-height: 70.6%;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  border-right-color: transparent;
+  width: 26.5%;
+  
 }
 
 .li {
   list-style: none;
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
   margin-top: -1px;
+
   line-height: 2;
-  padding: 5px 20px;
+  padding: .5rem;
   background: white;
+
+  
+  
+  
 }
