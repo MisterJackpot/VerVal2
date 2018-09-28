@@ -8,8 +8,7 @@
 }
 .modalmain {
   position:fixed;
-  background: whitesmoke;
-  width: 15%;
+  width: 13.8%;
   border-radius: 2%;
   align-content: center;
   height: auto;
@@ -43,5 +42,3 @@
     width: 2.5em;
     height: 2.5em;
 }
-  
-  
