@@ -33,12 +33,11 @@
 .showmodal{
     background-color: rgb(7, 77, 34);
     color: #ffffff;
-    border-radius: 50%;
-    font-weight: bold;
     border: transparent;
+    border-radius: 0.5em;
     position: absolute;
-    right: 10%;
-    top: 94%;
-    width: 2.5em;
-    height: 2.5em;
+    right: 11%;
+    top: 90%;
+    width: 10em;
+    height: 3em;
 }
