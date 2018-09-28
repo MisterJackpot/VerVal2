@@ -24,6 +24,12 @@ const Amostra = {
                       data: duplicated
                   }
                   error(er);
+              }else if(err.code == 'ER_WRONG_VALUE_COUNT_ON_ROW'){
+                let er = {
+                    type: "INVALID CSV",
+                    data: "INVAID CSV"
+                }
+                error(er)
               }
             error(err);
           })
