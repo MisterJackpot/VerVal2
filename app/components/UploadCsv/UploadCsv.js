@@ -23,17 +23,16 @@ export default class UploadCsv extends React.Component {
           accept=".csv"
           onDrop={(accepted, rejected) => this.onDrop(accepted, rejected)}
           style={{    
-            position: 'relative',
-            width: '12rem',
-            height: '12rem',
+            padding: '14%',
+            minHeight: '5rem',
+            minWidth: '11rem',
             borderWidth: '2px',
             borderColor: 'gray',
             backgroundColor:'whitesmoke',
             borderStyle: 'dashed',
-            borderRadius: '5px',
+            borderRadius: '.5rem',
             textAlign:'center',
-            display: 'table-cell',
-            verticalAlign: 'middle'
+            display: 'table-cell'
           }}
         >
           <span style={{fontWeight:'bold'}}>Arraste um arquivo csv ou clique aqui.</span>
@@ -43,10 +42,3 @@ export default class UploadCsv extends React.Component {
   }
 }
 
-// position: relative;
-// width: 200px;
-// height: 200px;
-// border-width: 2px;
-// border-color: red;
-// border-style: dashed;
-// border-radius: 5px;
