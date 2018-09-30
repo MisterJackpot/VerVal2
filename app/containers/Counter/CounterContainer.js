@@ -78,7 +78,8 @@ const Modal = ({ handleClose, show, children }) => {
             borderRadius:'0.3rem',
             position:'absolute',
             top:'102%',
-            right:'41%'
+            right:'41%',
+            cursor: 'pointer'
           }}
           onClick={handleClose}
         >

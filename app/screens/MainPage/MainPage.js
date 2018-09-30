@@ -14,7 +14,6 @@ export default class MainPage extends Component<Props> {
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.columnContainer}>
               <div className={styles.leftContainer}>
                 <MyChartContainer/>
               </div>
@@ -22,7 +21,6 @@ export default class MainPage extends Component<Props> {
                 <ListContainer/>
                 <CounterContainer/>
             </div>
-        </div>
       </div>
 
   )}
