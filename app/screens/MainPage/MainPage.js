@@ -19,7 +19,6 @@ export default class MainPage extends Component<Props> {
               </div>
             <div className={styles.rightContainer}>
                 <ListContainer/>
-                <CounterContainer/>
             </div>
       </div>
 
