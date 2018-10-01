@@ -57,11 +57,15 @@ export default class CounterPage extends Component<Props> {
   
   render() {
     return (
-      <div style={{width:'100%', position:'relative', textAlign: 'center'}}>
-        <button type='button' className={styles.showmodal} onClick={this.showModal}>Adicionar Amostra</button>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <UploadCsv acceptedFunction={this.insereAmostras}/>
-        </Modal>
+      <div>
+        <div style={{width:'100%', position:'relative', textAlign: 'center'}}>
+          <button type='button' className={styles.showmodal} onClick={this.showModal}>Adicionar Amostra</button>
+        </div>
+        <div>
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+            <UploadCsv acceptedFunction={this.insereAmostras}/>
+          </Modal>
+        </div>
       </div>
     );
   }
