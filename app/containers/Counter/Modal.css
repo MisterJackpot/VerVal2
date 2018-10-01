@@ -38,14 +38,11 @@
   cursor: pointer;
   position: relative;
   left: 20%;
+  z-index: 1;
 }
 @media(min-width:701px){
   .pequeno{
     visibility: hidden;
-    font-weight: bold;
-    border-radius: 2rem;
-    font-size: 1.5rem;
-    border-top: 4%;
   }
 }
 @media(max-width: 700px){
@@ -58,6 +55,8 @@
     border-radius: 2rem;
     font-size: 1.5rem;
     border-top: 4%;
+    min-height: 2rem;
+    min-width: 2rem;
   }
 }
 

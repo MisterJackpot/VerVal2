@@ -32,7 +32,7 @@ export default class HomeContainer extends Component<Props> {
         Alert.error("Senha inválida.",{
           position: 'top',
           effect: 'stackslide',
-          timeout: 7500
+          timeout: 5000
         });
       }
       this.setState({loginPermit:result});
