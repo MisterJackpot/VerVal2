@@ -58,7 +58,7 @@ export default class CounterPage extends Component<Props> {
   render() {
     return (
       <div>
-        <div style={{width:'100%', position:'relative', textAlign: 'center'}}>
+        <div style={{width:'34%', position:'absolute', bottom:'9%', textAlign: 'center', height:'3%'}}>
           <button type='button' className={styles.showmodal} onClick={this.showModal}>Adicionar Amostra</button>
         </div>
         <div>

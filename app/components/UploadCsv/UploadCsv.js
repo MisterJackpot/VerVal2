@@ -32,7 +32,7 @@ export default class UploadCsv extends React.Component {
             borderStyle: 'dashed',
             borderRadius: '.5rem',
             textAlign:'center',
-            display: 'table-cell'
+            display: 'table-cell'        
           }}
         >
           <span style={{fontWeight:'bold'}}>Arraste um arquivo csv ou clique aqui.</span>
