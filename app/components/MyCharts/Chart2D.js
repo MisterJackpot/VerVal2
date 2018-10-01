@@ -19,7 +19,7 @@ export default class Chart2D extends PureComponent<Props> {
       series: [
         {
           type: 'scatter',
-          data: data,
+          data: this.props.list,
           hoverAnimation: true
         }
       ],
