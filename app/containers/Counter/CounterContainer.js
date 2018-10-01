@@ -27,34 +27,40 @@ export default class CounterPage extends Component<Props> {
   }
 
   insereAmostras(file) {
-    
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
         result => {
-          Alert.success(result + " amostras inseridas.", {
-            position: 'top', 
-            effect: 'stackslide', 
-            timeout: 5000
-          })
-        },
-        err => {
-          Alert.error("Amostras repetidas, log salvo em " + err, {
+          Alert.success(result + ' amostras inseridas.', {
             position: 'top',
             effect: 'stackslide',
-            timeout: 10000
+            timeout: 5000
           });
+        },
+        err => {
+          if (err.type == 'INVALID CSV') {
+            Alert.error("Dados no CSV em formato invalido", {
+              position: 'top',
+              effect: 'stackslide',
+              timeout: 10000
+            });
+          } else {
+            Alert.error('Amostras repetidas, log salvo em ' + err, {
+              position: 'top',
+              effect: 'stackslide',
+              timeout: 10000
+            });
+          }
         }
       );
-    
-} else {
-  Alert.warning('Formato de arquivo invalido',{
-    position: 'top',
-    effect: 'stackslide',
-    timeout: 5000
-  });
-}
-}
-  
+    } else {
+      Alert.warning('Formato de arquivo invalido', {
+        position: 'top',
+        effect: 'stackslide',
+        timeout: 5000
+      });
+    }
+  }
+
   render() {
     return (
       <div>

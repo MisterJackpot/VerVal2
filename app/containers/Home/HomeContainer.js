@@ -50,8 +50,8 @@ export default class HomeContainer extends Component<Props> {
     }
     return (
         <div className={styles.container} align="center" data-tid="container">
-            <ImageWrapperComponent path={'./Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange}/>
+            <ImageWrapperComponent path={'Assets/federages.png'}/>
+            <InputComponent onChange={this.onChange}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
         </div>
     );

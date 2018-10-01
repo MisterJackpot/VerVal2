@@ -16,16 +16,22 @@ const Amostra = {
             resolve(result.affectedRows)
           })
           .on('error', err => {
-            if (err.code == 'ER_DUP_ENTRY') {
-              const duplicated = err.sqlMessage.split("'")[1]
-              const er = {
-                type: "Duplicated Entry",
-                data: duplicated
+              if(err.code == 'ER_DUP_ENTRY'){
+                  let duplicated = err.sqlMessage.split("'")[1]
+                  let er = {
+                      type: "Duplicated Entry",
+                      data: duplicated
+                  }
+                  error(er);
+              }else if(err.code == 'ER_WRONG_VALUE_COUNT_ON_ROW'){
+                let er = {
+                    type: "INVALID CSV",
+                    data: "INVAID CSV"
+                }
+                error(er)
               }
-              error(er);
-            }
-            error(err);
-          })
+              error(err);
+            })
           .on('end', () => {
             con.destroy();
           });
