@@ -1,16 +1,17 @@
-import Connection from "../db";
+import Connection from './../db';
 
 const Amostra = {
-  insert: amostra => new Promise((resolve, reject) => {
+  insert: amostra => {
+    return new Promise((resolve, error) => {
       const con = Connection.getConnection();
-      con.connect((err) => {
+      con.connect(function(err) {
         if (err) throw err;
         console.log('Connected!');
-        const sql = 'INSERT INTO AMOSTRAS VALUES ?';
-        const values = amostra;
+        var sql = 'INSERT INTO AMOSTRAS VALUES ?';
+        var values = amostra;
         console.log(values);
         con
-          .query(sql, [values], (err, result) => {
+          .query(sql, [values], function(err, result) {
             if (err) throw err;
             console.log('Number of records inserted: ' + result.affectedRows);
             resolve(result.affectedRows)
@@ -26,17 +27,18 @@ const Amostra = {
               }else if(err.code == 'ER_WRONG_VALUE_COUNT_ON_ROW'){
                 let er = {
                     type: "INVALID CSV",
-                    data: "INVAID CSV"
+                    data: "INVALID CSV"
                 }
                 error(er)
               }
-              error(err);
-            })
+            error(err);
+          })
           .on('end', () => {
             con.destroy();
           });
       });
-    }),
+    });
+  },
 
   getIds: () => {
     return new Promise((resolve,error) => {
