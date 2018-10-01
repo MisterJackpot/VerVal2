@@ -27,18 +27,14 @@
   }
 
 .showmodal{
-    background-color: rgb(7, 77, 34);
-    color: #ffffff;
-    border: transparent;
-    border-radius: 0.5em;
-    position: absolute;
-    right: 11%;
-    top: 90%;
-    width: 10em;
-    height: 3em;
-    right: 11%;
-    top: 87%;
-    min-width: 10%;
-    min-height: 6%;
-    cursor: pointer;
+  background-color: rgb(7, 77, 34);
+  color: #ffffff;
+  border: transparent;
+  border-radius: 0.5em;
+  width: 10em;
+  height: 3em;
+  right: 11%;
+  min-width: 10%;
+  min-height: 6%;
+  cursor: pointer;
 }

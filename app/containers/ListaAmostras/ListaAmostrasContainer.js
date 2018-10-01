@@ -9,8 +9,12 @@ export default class ListaAmostrasContainer extends Component<Props> {
   render() {
     return (
       <div>
-        <CounterContainer/>
-        <FilteredList/>
+        <div>
+          <CounterContainer/>
+        </div>
+        <div>
+          <FilteredList/>
+        </div>
       </div>
     );
   }
