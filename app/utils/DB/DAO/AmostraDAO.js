@@ -1,6 +1,6 @@
 import Connection from './../db';
 
-const Amostra = {
+const AmostraDAO = {
   insert: amostra => {
     return new Promise((resolve, error) => {
       const con = Connection.getConnection();
@@ -56,4 +56,4 @@ const Amostra = {
   }
 };
 
-export default Amostra;
+export default AmostraDAO;

@@ -10,6 +10,7 @@ import { validarSenhaLogin } from '../../utils/BO/SenhaBO';
 import InputComponent from '../../components/LoginInputComponent/InputComponent';
 import { Redirect } from 'react-router';
 import Alert from 'react-s-alert';
+import AmostraBO from '../../utils/BO/AmostraBO';
 
 type Props = {};
 
@@ -24,6 +25,7 @@ export default class HomeContainer extends Component<Props> {
   }
 
   validarSenha = () => {
+    AmostraBO.getAmostras();
     validarSenhaLogin(this.state.password).then(result =>{
       if(result){
         Alert.closeAll();

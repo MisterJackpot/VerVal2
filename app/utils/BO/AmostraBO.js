@@ -1,4 +1,4 @@
-import Amostra from '../DB/DAO/AmostraDAO';
+import AmostraDAO from '../DB/DAO/AmostraDAO';
 import { element } from 'prop-types';
 const fs = require('fs');
 const csv = require('fast-csv');
@@ -39,7 +39,7 @@ const AmostraBO = {
 
   insert: amostra => {
     return new Promise((resolve, error) => {
-      Amostra.getIds().then(result => {
+      AmostraDAO.getIds().then(result => {
         console.log(result);
         var aux = '';
         var errorList = [];
@@ -73,7 +73,7 @@ const AmostraBO = {
           });
           error(f);
         } else {
-          Amostra.insert(amostra).then(
+          AmostraDAO.insert(amostra).then(
             result => {resolve(result)},
             err => {
               error(err);
@@ -81,6 +81,12 @@ const AmostraBO = {
           );
         }
       });
+    });
+  },
+
+  getAmostras: () => {
+    AmostraDAO.getIds().then(result => {
+      console.log(result);
     });
   }
 };
