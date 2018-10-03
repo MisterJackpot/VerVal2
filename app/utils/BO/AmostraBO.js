@@ -85,10 +85,8 @@ const AmostraBO = {
   },
 
   getAmostras: () => {
-    return new Promise((resolve, error) => {
-      AmostraDAO.getIds().then(result => {
-        return result;
-      });
+    return AmostraDAO.getIds().then(result => {
+      return result;
     });
   }
 };
