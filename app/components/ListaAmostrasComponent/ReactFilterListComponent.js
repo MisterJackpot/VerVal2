@@ -17,7 +17,6 @@ export default class FilteredList extends Component<Props> {
       array.forEach(element => {
         amostras.push(element.id);
         this.state.initialItems.push(element.id);
-        console.log(element.id);
       });
       this.setState({initialItems:amostras});
     });
