@@ -32,7 +32,7 @@ export default class HomeContainer extends Component<Props> {
         Alert.error("Senha inválida.",{
           position: 'top',
           effect: 'stackslide',
-          timeout: 7500
+          timeout: 5000
         });
       }
       this.setState({loginPermit:result});
@@ -50,8 +50,8 @@ export default class HomeContainer extends Component<Props> {
     }
     return (
         <div className={styles.container} align="center" data-tid="container">
-            <ImageWrapperComponent path={'./Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange}/>
+            <ImageWrapperComponent path={'Assets/federages.png'}/>
+            <InputComponent onChange={this.onChange}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
         </div>
     );

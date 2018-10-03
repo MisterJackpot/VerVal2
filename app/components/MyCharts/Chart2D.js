@@ -20,7 +20,7 @@ export default class Chart2D extends PureComponent<Props> {
         {
           name: 'Amostra',
           type: 'scatter',
-          data: dataTest,
+          data: this.props.list,
           encode: {
             x: 'x',
             y: 'y',
