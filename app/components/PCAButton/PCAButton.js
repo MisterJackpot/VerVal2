@@ -10,7 +10,7 @@ export default class PCAButton extends React.Component{
 		this.handleClick = this.test.bind(this);
 	}
     	test = async () => {
-			console.log( (await PCA.getPCA()));
+			console.log( (await PCA.getXYZ()));
 		}
     render() {
         return(
