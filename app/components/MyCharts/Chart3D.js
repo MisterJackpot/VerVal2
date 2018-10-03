@@ -5,8 +5,6 @@ import 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
-import {data} from '../../utils/Data';
-import {data3D} from '../../utils/DataTest';
 
 
 

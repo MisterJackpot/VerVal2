@@ -5,8 +5,6 @@ import 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
-import {data} from '../../utils/Data';
-import {dataTest} from '../../utils/DataTest';
 
 
 
@@ -36,7 +34,7 @@ export default class Chart2D extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = dataTest;
+    var seriesU = this.state.series;
     this.setState({
       series: seriesU
     });

@@ -2,7 +2,6 @@ import React from 'react';
 import Chart3D from '../../components/MyCharts/Chart3D';
 import Chart2D from '../../components/MyCharts/Chart2D';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
-import { data3D } from '../../utils/DataTest';
 import { Redirect } from 'react-router';
 import PCA from '../../utils/BO/PCABO.js'
 
@@ -23,13 +22,14 @@ export default class MyChartContainer extends React.Component<Props> {
       array.forEach(element => {
         amostras.push(element);
       });
-      this.setState({items: amostras});
+      this.setState({ items: amostras });
+      this.setState({ typeChart: !this.state.typeChart });
+      
     });
   }
 
   onClick = () => {
     this.setState({ typeChart: !this.state.typeChart });
-    console.log(this.state);
   };
 
   render() {
