@@ -25,7 +25,6 @@ export default class HomeContainer extends Component<Props> {
   }
 
   validarSenha = () => {
-    AmostraBO.getAmostras();
     validarSenhaLogin(this.state.password).then(result =>{
       if(result){
         Alert.closeAll();

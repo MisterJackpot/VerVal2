@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import List from './List';
 import styles from './ReactFilteredList.css';
+import AmostraBO from '../../utils/BO/AmostraBO';
 
 export default class FilteredList extends Component<Props> {
   constructor(props) {
+
+
+
     super(props);
     this.state = {
       initialItems: [
