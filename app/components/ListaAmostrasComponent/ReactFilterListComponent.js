@@ -17,7 +17,6 @@ export default class FilteredList extends Component<Props> {
       array.forEach(element => {
         amostras.push(element.id);
         this.state.initialItems.push(element.id);
-        console.log(element.id);
       });
       this.setState({initialItems:amostras});
     });
@@ -45,7 +44,7 @@ export default class FilteredList extends Component<Props> {
             placeholder="Search"
             onChange={this.filterList.bind(this)}
           />
-          <List items={this.state.initialItems} />
+          <List items={this.state.items} />
         </div>
       </div>
     );
