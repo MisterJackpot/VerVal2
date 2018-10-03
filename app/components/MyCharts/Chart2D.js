@@ -5,8 +5,6 @@ import 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
-import {data} from '../../utils/Data';
-import {dataTest} from '../../utils/DataTest';
 
 
 
@@ -18,9 +16,13 @@ export default class Chart2D extends PureComponent<Props> {
     this.state = {
       series: [
         {
+          name: 'Amostra',
           type: 'scatter',
           data: this.props.list,
-          hoverAnimation: true
+          encode: {
+            x: 'x',
+            y: 'y',
+          },
         }
       ],
       symbolSize: 2.5
@@ -32,7 +34,7 @@ export default class Chart2D extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = dataTest;
+    var seriesU = this.state.series;
     this.setState({
       series: seriesU
     });
@@ -47,10 +49,15 @@ export default class Chart2D extends PureComponent<Props> {
         type: 'value'
     },
     axisType: 'category',
+    tooltip: {
+      trigger: 'item',
+      enterable: true
+     },
     dataset: {
         dimensions: [
-            'Income',
-            'Life Expectancy',
+            'x',
+            'y',
+            'z'
         ],
         source: this.props.list
       },
@@ -63,7 +70,7 @@ export default class Chart2D extends PureComponent<Props> {
         <div className={styles.backButton} data-tid="backButton">
         </div>
         <div className={styles.parent}>
-          <ReactEcharts option={this.getOption()} style={{ height: '100%' }} />
+          <ReactEcharts option={this.getOption()} style={{ height: '100%' }}/>
         </div>
       </div>
     );

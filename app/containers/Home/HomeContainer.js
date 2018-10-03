@@ -54,7 +54,7 @@ export default class HomeContainer extends Component<Props> {
             <ImageWrapperComponent path={'Assets/federages.png'}/>
             <InputComponent onChange={this.onChange}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
-        </div>
+		</div>
     );
   }
   props: Props;

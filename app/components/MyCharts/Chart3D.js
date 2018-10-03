@@ -5,8 +5,6 @@ import 'echarts';
 import ReactEcharts from 'echarts-for-react';
 import kmeans  from '../../utils/kmeans';
 import styles from './MyChart.css';
-import {data} from '../../utils/Data';
-import {data3D} from '../../utils/DataTest';
 
 
 
@@ -16,7 +14,7 @@ export default class Chart3D extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      symbolSize: 5
+      symbolSize: 7
     }
   }
 
@@ -47,15 +45,18 @@ export default class Chart3D extends PureComponent<Props> {
         ],
         source: this.props.list
     },
+
     series: [
-        {
-            type: 'scatter3D',
-            symbolSize: this.state.symbolSize,
-            encode: {
+      {
+        name: '3D',
+        type: 'scatter3D',
+        symbolSize: this.state.symbolSize,
+        encode: {
                 x: 'x',
                 y: 'y',
                 z: 'z',
-            }
+        },
+       
         }
     ]
   })
