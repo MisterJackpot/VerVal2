@@ -51,4 +51,4 @@ main.js.map
 .idea
 npm-debug.log.*
 
-log/
+log/app/yarn.lock
