@@ -52,3 +52,4 @@ main.js.map
 npm-debug.log.*
 
 log/app/yarn.lock
+app/package-lock.json
