@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 import Alert from 'react-s-alert';
-
 type Props = {
   children: React.Node
 };
