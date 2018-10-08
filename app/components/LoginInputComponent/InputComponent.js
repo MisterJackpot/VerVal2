@@ -26,7 +26,8 @@ export default class InputComponent extends React.Component{
              <div className={styles.container} >
                 <input className={styles.input} placeholder="Senha"
                        type={passwordIsMasked ? 'password' : 'text'}
-                       onChange = {this.props.onChange} />
+                       onChange = {this.props.onChange}
+                       onKeyPress = {this.props.onKeyPress}/>
                 <div className={styles.eyeButton} onClick={this.togglePasswordMask}></div>   
             </div>
         )

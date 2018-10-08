@@ -23,7 +23,6 @@ export default class HomeContainer extends Component<Props> {
       loginPermit: false
     };
   }
-
   validarSenha = () => {
     validarSenhaLogin(this.state.password).then(result =>{
       if(result){
@@ -40,6 +39,11 @@ export default class HomeContainer extends Component<Props> {
     });
   }
 
+  validateEnterClick = (e) =>{
+    if(e.key === 'Enter')
+      this.validarSenha();
+  }
+  
   onChange = (event) => {
     this.setState({password: event.target.value});
   };
@@ -52,7 +56,7 @@ export default class HomeContainer extends Component<Props> {
     return (
         <div className={styles.container} align="center" data-tid="container">
             <ImageWrapperComponent path={'Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange}/> 
+            <InputComponent onChange={this.onChange} onKeyPress={this.validateEnterClick}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
 		</div>
     );
