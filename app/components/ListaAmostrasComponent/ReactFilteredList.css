@@ -1,6 +1,6 @@
 .mount-point {
 padding: 10%;
-  
+
 }
 
 .input {
@@ -31,4 +31,11 @@ padding: 10%;
   line-height: 2;
   padding: .5rem;
   background: white;
+}
+
+.fontAmostras {
+  font-size: 2rem;
+  font-family:  sans-serif;
+  font-weight: lighter;
+  font-variant: inherit;
 }

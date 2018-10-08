@@ -10,7 +10,7 @@ export default class List extends Component<Props> {
         <ul className={styles.ul}>
           {this.props.items.map(item => (
             <li className={styles.li} key={item}>
-              Amostra {item}
+              {item}
             </li>
           ))}
         </ul>
