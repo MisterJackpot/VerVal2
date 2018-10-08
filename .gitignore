@@ -51,5 +51,5 @@ main.js.map
 .idea
 npm-debug.log.*
 
-log/app/yarn.lock
+app/yarn.lock
 app/package-lock.json
