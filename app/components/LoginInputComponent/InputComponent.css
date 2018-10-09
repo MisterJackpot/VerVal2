@@ -16,9 +16,22 @@
     align-items: center;
 }
 
-.eyeButton {
-  background-image: url("../../Assets/eyes.png");
+.eyeButtonHidden, .eyeButtonVisible {
   background-repeat: no-repeat;
-  width: 36px;
-  height: 32px;
+  background-size: contain;
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+.eyeButtonHidden {
+  background-image: url("../../Assets/hide.png");
+}
+.eyeButtonVisible {
+  background-image: url("../../Assets/show.png");
+}
+
+.eyeButtonHidden:hover, .eyeButtonVisible:hover{
+  filter: invert(35%);
+  transition: filter .25s;
 }
