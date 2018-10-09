@@ -39,9 +39,10 @@ export default class HomeContainer extends Component<Props> {
     });
   }
 
-  validateEnterClick = (e) =>{
-    if(e.key === 'Enter')
+  validarPressEnter = (e) =>{
+    if(e.key === 'Enter'){
       this.validarSenha();
+    }
   }
   
   onChange = (event) => {
@@ -56,7 +57,7 @@ export default class HomeContainer extends Component<Props> {
     return (
         <div className={styles.container} align="center" data-tid="container">
             <ImageWrapperComponent path={'Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange} onKeyPress={this.validateEnterClick}/> 
+            <InputComponent onChange={this.onChange} onKeyPress={this.validarPressEnter}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
 		</div>
     );
