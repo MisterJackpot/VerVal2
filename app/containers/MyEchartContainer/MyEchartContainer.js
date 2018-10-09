@@ -39,7 +39,7 @@ export default class MyChartContainer extends React.Component<Props> {
         <div align="center">
           <NavigateButtonComponent click={this.onClick} text="Trocar Gráfico" />
         </div>
-        {typeChart ? <Chart2D list={this.state.items} /> : <Chart3D list={this.state.items} />}
+        {typeChart ? <Chart2D list={this.state.items} horizontal="P1" vertical="P2"/> : <Chart3D list={this.state.items} />}
       </div>
     );
   }
