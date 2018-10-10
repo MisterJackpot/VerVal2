@@ -32,6 +32,10 @@
 }
 
 .eyeButtonHidden:hover, .eyeButtonVisible:hover{
-  filter: invert(35%);
+  filter: opacity(70%);
   transition: filter .25s;
+}
+.eyeButtonHidden:active, .eyeButtonVisible:active{
+  filter: opacity(0);
+  transition: filter .05s ease-in;
 }
