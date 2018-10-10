@@ -33,9 +33,14 @@ export default class MyChartContainer extends React.Component<Props> {
     this.setState({ typeChart: !this.state.typeChart });
   };
 
-  onClickCheckbox = (e) => {
-    this.setState({ typeChart: !this.state.typeChart });
-    console.log(this.state);
+  onChangeCheckbox = (e) => {
+    console.log(e.value);
+    if(e.value == '0'){
+      this.setState({typeChart: false});
+    }
+    else if(e.value == '1'){
+      this.setState({typeChart: true});
+    }
   }
 
 
@@ -43,9 +48,8 @@ export default class MyChartContainer extends React.Component<Props> {
     const typeChart = this.state.typeChart;
     return (
       <div style={{ width: '100%', height: '100%' }}>
-        <div align="center">
-          <ChangeGraphComponent click={this.onClickCheckbox}></ChangeGraphComponent>
-          <NavigateButtonComponent click={this.onClick} text="Trocar Gráfico" />
+        <div align="center" style={{paddingTop:'2.8rem'}}>
+          <ChangeGraphComponent change={this.onChangeCheckbox}></ChangeGraphComponent>
         </div>
         {typeChart ? <Chart2D list={this.state.items} /> : <Chart3D list={this.state.items} />}
       </div>
