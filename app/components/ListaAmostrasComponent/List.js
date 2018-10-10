@@ -6,7 +6,7 @@ export default class List extends Component<Props> {
 
   render() {
     return (
-      <div className={styles.list}>
+      <div>
         <ul className={styles.ul}>
           {this.props.items.map(item => (
             <li className={styles.li} key={item}>

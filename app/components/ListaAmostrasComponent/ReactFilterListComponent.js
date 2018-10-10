@@ -47,7 +47,9 @@ export default class FilteredList extends Component<Props> {
             placeholder="Search"
             onChange={this.filterList.bind(this)}
           />
-          <List items={this.state.items} />
+          <div>
+            <List items={this.state.items} />
+          </div>
         </div>
       </div>
     );

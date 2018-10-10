@@ -63,15 +63,10 @@ export default class CounterPage extends Component<Props> {
 
   render() {
     return (
-      <div>
-        <div style={{width:'25%', position:'absolute', bottom:'9%', textAlign: 'center', height:'3%'}}>
-          <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
-        </div>
-          
-        <div style={{width:'25%', position:'absolute', bottom:'9%', textAlign: 'center', height:'3%'}}>
-          <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
-        </div>
-        <div>
+      <div className={styles.botaoAmostras}>
+        <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
+        <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
+        <div> 
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <UploadCsv acceptedFunction={this.insereAmostras}/>
           </Modal>
