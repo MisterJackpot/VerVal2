@@ -48,7 +48,7 @@ export default class MyChartContainer extends React.Component<Props> {
     const typeChart = this.state.typeChart;
     return (
       <div style={{ width: '100%', height: '100%' }}>
-        <div align="center">
+        <div align="center" style={{paddingTop:'2.8rem'}}>
           <ChangeGraphComponent change={this.onChangeCheckbox}></ChangeGraphComponent>
         </div>
         {typeChart ? <Chart2D list={this.state.items} /> : <Chart3D list={this.state.items} />}

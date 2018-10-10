@@ -15,14 +15,14 @@ export default class ChangeGraphComponent extends React.Component{
         const customStyles = {
             control: (base, state) => ({
               ...base,
-              width: "25%",
+              width: "18%",
               background: "whitesmoke"
             }),
             menu: state => ({
               ...state,  
-              width: "25%",
+              width: "18%",
               position:"absolute",
-              left:"37.6%",
+              left:"41%",
             }),
             menuList: base => ({
                 ...base,
