@@ -50,7 +50,6 @@ export default class MyChartContainer extends React.Component<Props> {
       <div style={{ width: '100%', height: '100%' }}>
         <div align="center">
           <ChangeGraphComponent change={this.onChangeCheckbox}></ChangeGraphComponent>
-          <NavigateButtonComponent click={this.onClick} text="Trocar Gráfico" />
         </div>
         {typeChart ? <Chart2D list={this.state.items} /> : <Chart3D list={this.state.items} />}
       </div>

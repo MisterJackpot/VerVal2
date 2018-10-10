@@ -1,5 +1,4 @@
 import React from "react";
-import styles from './ChangeGraphComponent.css';
 import Select from 'react-select';
 
 export default class ChangeGraphComponent extends React.Component{
@@ -13,10 +12,28 @@ export default class ChangeGraphComponent extends React.Component{
             {value: '0', label: '3D'},
             {value: '1', label: 'P1-P2'}
         ]
-    
+        const customStyles = {
+            control: (base, state) => ({
+              ...base,
+              width: "25%",
+              background: "whitesmoke"
+            }),
+            menu: state => ({
+              ...state,  
+              width: "25%",
+              position:"absolute",
+              left:"37.6%",
+            }),
+            menuList: base => ({
+                ...base,
+              borderRadius: "4px",
+              // kill the white space on first and last option
+              padding: 0
+            })
+          };
         return(
-            <div id='select'>
-                <Select options={options} onChange={this.props.change} defaultValue={{value: '0', label: '3D'}}/>
+            <div>
+                <Select styles={customStyles} options={options} onChange={this.props.change} defaultValue={{value: '0', label: '3D'}}/>
             </div>
         )
     }
