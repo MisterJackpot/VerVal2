@@ -16,12 +16,13 @@ export default class Chart2D extends PureComponent<Props> {
     this.state = {
       series: [
         {
-          name: 'Amostra',
+          name: '2D',
           type: 'scatter',
           data: this.props.list,
+          dimensions: ['P1','P2','P3'],
           encode: {
-            x: 'x',
-            y: 'y',
+            x: this.props.horizontal,
+            y: this.props.vertical
           },
         }
       ],
@@ -41,24 +42,18 @@ export default class Chart2D extends PureComponent<Props> {
   }
 
   getOption = () => ({
+    grid: {},
     xAxis: {
         type: 'value'
     },
-    grid: {},
     yAxis: {
         type: 'value'
     },
-    axisType: 'category',
     tooltip: {
       trigger: 'item',
       enterable: true
      },
     dataset: {
-        dimensions: [
-            'x',
-            'y',
-            'z'
-        ],
         source: this.props.list
       },
     series: this.state.series
