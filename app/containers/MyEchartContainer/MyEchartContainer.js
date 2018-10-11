@@ -38,7 +38,7 @@ export default class MyChartContainer extends React.Component<Props> {
     if(e.value == '0'){
       this.setState({typeChart: false});
     }
-    else if(e.value == '1'){
+    else{
       this.setState({typeChart: true});
     }
   }
