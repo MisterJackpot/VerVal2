@@ -18,7 +18,7 @@ export default class ChangeGraphComponent extends React.Component{
         const customStyles = {
             control: (base, state) => ({
                 ...base,
-                width: "18%"
+                width: "18%",
             }),
             menu: (base,state) => ({
                 ...base,  
@@ -29,7 +29,8 @@ export default class ChangeGraphComponent extends React.Component{
             menuList: (base,state) => ({
                 ...base,
                 borderRadius: "4px",
-                padding: 0
+                padding: 0,
+                textAlign: 'left'
             })
         };
         
@@ -40,7 +41,7 @@ export default class ChangeGraphComponent extends React.Component{
                     ...theme,
                     colors: {
                     ...theme.colors,
-                      primary25: '#00B200',
+                      primary25: '#e7ffe7',
                       primary: '#074d22',
                     },
                   })}
