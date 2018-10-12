@@ -23,7 +23,8 @@
 }
 .button:hover {
   background-color: rgb(63, 117, 84);
-  padding: 1rem;
+  padding: 1.1rem;
+  width: 10.3rem;
   transition: all .25s; 
 }
 

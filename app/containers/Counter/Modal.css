@@ -37,17 +37,23 @@
   box-sizing: border-box;
 
 }
+
+
 .botaoAmostras {
 
   text-align: center;
   box-sizing: border-box;
-
-
 }
 @media(min-width:701px){
   .pequeno{
     display: none;
     
+  }
+  .showmodal:hover {
+    transition: all .25s;
+    background-color: rgb(63, 117, 84);
+    width: 11rem;
+    height: 3.4rem;
   }
 }
 @media(max-width: 700px){
@@ -64,6 +70,10 @@
     min-height: 2rem;
     min-width: 2rem;
     padding: 0 .5rem;
+  }
+  .showmodal:hover {
+    transition: all .25s;
+    background-color: rgb(63, 117, 84);
   }
 }
 
