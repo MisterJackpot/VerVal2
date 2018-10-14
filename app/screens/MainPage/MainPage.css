@@ -5,13 +5,11 @@
     display: flex;
     overflow: auto;
   }
-  
+
   .leftContainer {
     flex: 2;
-
   }
-  
+
   .rightContainer {
     flex: 1;
-
   }

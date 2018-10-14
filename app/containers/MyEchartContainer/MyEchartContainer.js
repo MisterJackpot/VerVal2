@@ -25,7 +25,7 @@ export default class MyChartContainer extends React.Component<Props> {
       });
       this.setState({ items: amostras });
       this.setState({ typeChart: !this.state.typeChart });
-      
+
     });
   }
 
@@ -49,6 +49,7 @@ export default class MyChartContainer extends React.Component<Props> {
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <div align="center" style={{paddingTop:'2.8rem'}}>
+          <p>Selecione o gráfico: </p>
           <ChangeGraphComponent change={this.onChangeCheckbox}></ChangeGraphComponent>
         </div>
         {typeChart ? <Chart2D list={this.state.items} horizontal="P1" vertical="P2"/> : <Chart3D list={this.state.items} />}

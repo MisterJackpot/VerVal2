@@ -21,7 +21,7 @@
 .displayblock {
     display: block;
   }
-  
+
 .displaynone {
     display: none;
   }
@@ -38,16 +38,27 @@
 
 }
 
-
 .botaoAmostras {
-
   text-align: center;
   box-sizing: border-box;
 }
+
+.closeModalButton{
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 102%;
+  right: 41%;
+  cursor: pointer;
+}
+
+.closeModalButton:hover{
+  background-color: rgb(63, 117, 84);
+}
+
 @media(min-width:701px){
   .pequeno{
     display: none;
-    
+
   }
   .showmodal:hover {
     transition: all .25s;
@@ -76,4 +87,3 @@
     background-color: rgb(63, 117, 84);
   }
 }
-
