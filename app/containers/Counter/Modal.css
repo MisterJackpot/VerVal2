@@ -61,10 +61,9 @@
 
   }
   .showmodal:hover {
-    transition: all .25s;
+    transition: all 0.3s ease 0s;
     background-color: rgb(63, 117, 84);
-    width: 11rem;
-    height: 3.4rem;
+  
   }
 }
 @media(max-width: 700px){
@@ -83,7 +82,7 @@
     padding: 0 .5rem;
   }
   .showmodal:hover {
-    transition: all .25s;
+    transition: all 0.3s ease 0s;
     background-color: rgb(63, 117, 84);
   }
 }
