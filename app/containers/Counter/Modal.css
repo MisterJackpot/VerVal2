@@ -52,6 +52,7 @@
 }
 
 .closeModalButton:hover{
+  transition: all 0.3s ease 0s;
   background-color: rgb(63, 117, 84);
 }
 
