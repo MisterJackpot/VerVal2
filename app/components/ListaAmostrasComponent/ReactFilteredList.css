@@ -56,7 +56,7 @@ padding: 5% 10%;
 
 /* width */
 ::-webkit-scrollbar {
-  width: .75rem;
+  min-width: .75rem;
 }
 
 /* Track */
