@@ -4,7 +4,7 @@ import Chart2D from '../../components/MyCharts/Chart2D';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
 import ChangeGraphComponent from '../../components/ChangeGraphComponent/ChangeGraphComponent';
 import { Redirect } from 'react-router';
-import PCA from '../../utils/BO/PCABO.js'
+import PCA from '../../utils/BO/PCABO.js';
 
 type Props = {};
 
@@ -12,7 +12,9 @@ export default class MyChartContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      typeChart: true,
+      typeChart: 0,
+      horizontal: '',
+      vertical: '',
       csv: false,
       items: []
     };
@@ -25,33 +27,67 @@ export default class MyChartContainer extends React.Component<Props> {
       });
       this.setState({ items: amostras });
       this.setState({ typeChart: !this.state.typeChart });
-
     });
   }
 
-  onClick = () => {
-    this.setState({ typeChart: !this.state.typeChart });
+  componentWillMount(){
+    this.forceUpdate()
+  }
+  onChangeCheckbox = e => {
+    if (e.value == '0') {
+      this.setState({ typeChart: 1 });
+    } else if (e.value == '1') {
+      this.setState({ typeChart: 2});
+    } else if (e.value == '2') {
+      this.setState({ typeChart: 3});
+    } else if (e.value == '3') {
+      this.setState({ typeChart: 4});
+    }
   };
 
-  onChangeCheckbox = (e) => {
-    console.log(e.value);
-    if(e.value == '0'){
-      this.setState({typeChart: false});
+  myChart() {
+    if (this.state.typeChart == 1) {
+    return (<Chart3D list={this.state.items} />);
     }
-    else{
-      this.setState({typeChart: true});
+    if (this.state.typeChart == 2) {
+      return (
+        <Chart2D
+          list={this.state.items}
+          horizontal='P1'
+          vertical='P2'
+        />
+      );
+    }
+    if (this.state.typeChart == 3) {
+      return (
+        <Chart2D
+          list={this.state.items}
+          horizontal='P2'
+          vertical='P3'
+        />
+      );
+    }
+     if (this.state.typeChart == 4) {
+      return (
+        <Chart2D
+          list={this.state.items}
+          horizontal='P1'
+          vertical='P3'
+        />
+      );
     }
   }
 
-
   render() {
     const typeChart = this.state.typeChart;
+    const horizontal = this.state.horizontal;
+    const vertical = this.state.vertical;
     return (
       <div style={{ width: '100%', height: '100%' }}>
-        <div align="center" style={{paddingTop:'2.8rem'}}>
-          <ChangeGraphComponent change={this.onChangeCheckbox}></ChangeGraphComponent>
+        <div align="center" style={{ paddingTop: '2.8rem' }}>
+          <ChangeGraphComponent change={this.onChangeCheckbox} />
         </div>
-        {typeChart ? <Chart2D list={this.state.items} horizontal="P1" vertical="P2"/> : <Chart3D list={this.state.items} />}
+        {this.myChart()}
       </div>
     );
   }

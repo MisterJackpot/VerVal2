@@ -65,7 +65,8 @@ export default class Chart2D extends PureComponent<Props> {
         <div className={styles.backButton} data-tid="backButton">
         </div>
         <div className={styles.parent}>
-          <ReactEcharts option={this.getOption()} style={{ height: '100%' }}/>
+          <ReactEcharts option={this.getOption()} lazyUpdate={true}  
+                        style={{ height: '100%' }}/>
         </div>
       </div>
     );
