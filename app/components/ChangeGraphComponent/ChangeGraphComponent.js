@@ -16,26 +16,35 @@ export default class ChangeGraphComponent extends React.Component{
         ]
         const customStyles = {
             control: (base, state) => ({
-              ...base,
-              width: "18%",
-              background: "whitesmoke"
-            }),
-            menu: state => ({
-              ...state,  
-              width: "18%",
-              position:"absolute",
-              left:"41%",
-            }),
-            menuList: base => ({
                 ...base,
-              borderRadius: "4px",
-              // kill the white space on first and last option
-              padding: 0
+                width: "18%",
+            }),
+            menu: (base,state) => ({
+                ...base,  
+                width: "18%",
+                position:"absolute",
+                left:"41%",
+            }),
+            menuList: (base,state) => ({
+                ...base,
+                borderRadius: "4px",
+                padding: 0,
+                textAlign: 'left'
             })
-          };
+        };
+        
         return(
             <div>
-                <Select styles={customStyles} options={options} onChange={this.props.change} defaultValue={{value: '0', label: '3D'}}/>
+                <Select styles={customStyles} options={options} onChange={this.props.change} defaultValue={{value: '0', label: '3D'}}
+                theme={(theme) => ({
+                    ...theme,
+                    colors: {
+                    ...theme.colors,
+                      primary25: '#e7ffe7',
+                      primary: '#074d22',
+                    },
+                  })}
+                />
             </div>
         )
     }

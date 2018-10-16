@@ -14,9 +14,9 @@ export default class MainPage extends Component<Props> {
   render() {
     return (
       <div className={styles.container}>
-              <div className={styles.leftContainer}>
+            <div className={styles.leftContainer}>
                 <MyChartContainer/>
-              </div>
+            </div>
             <div className={styles.rightContainer}>
                 <ListContainer/>
             </div>

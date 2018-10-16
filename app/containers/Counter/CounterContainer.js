@@ -12,21 +12,23 @@ import styles from './Modal.css';
 type Props = {};
 
 export default class CounterPage extends Component<Props> {
+
   props: Props;
 
   state = { show: false }
-  
+
   showModal = () => {
     this.setState({ show: true });
     console.log(this.state)
   }
-  
+
   hideModal = () => {
     this.setState({ show: false });
     console.log(this.state)
   }
 
-  insereAmostras(file) {
+  insereAmostras = (file) => {
+    console.log(this)
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
         result => {
@@ -35,6 +37,7 @@ export default class CounterPage extends Component<Props> {
             effect: 'stackslide',
             timeout: 5000
           });
+          this.hideModal();
         },
         err => {
           if (err.type == 'INVALID CSV') {
@@ -63,14 +66,9 @@ export default class CounterPage extends Component<Props> {
 
   render() {
     return (
-      <div>
-        <div style={{width:'25%', position:'absolute', bottom:'9%', textAlign: 'center', height:'3%'}}>
-          <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
-        </div>
-          
-        <div style={{width:'25%', position:'absolute', bottom:'9%', textAlign: 'center', height:'3%'}}>
-          <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
-        </div>
+      <div className={styles.botaoAmostras}>
+        <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
+        <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
         <div>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <UploadCsv acceptedFunction={this.insereAmostras}/>
@@ -82,21 +80,12 @@ export default class CounterPage extends Component<Props> {
 }
 
 const Modal = ({ handleClose, show, children }) => {
-  
+
   return (
       <div className={(show ? styles.displayblock : styles.displaynone)}>
       <section className={styles.modalmain}>
           {children}
-        <button
-          style={{
-            borderRadius:'0.3rem',
-            position:'absolute',
-            top:'102%',
-            right:'41%',
-            cursor: 'pointer'
-          }}
-          onClick={handleClose}
-        >
+        <button className={styles.closeModalButton} onClick={handleClose}>
           Fechar
         </button>
       </section>
