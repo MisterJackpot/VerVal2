@@ -12,7 +12,7 @@ export default class MyChartContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      is3D: false,
+      typeChart: 0,
       horizontal: '',
       vertical: '',
       csv: false,
@@ -26,26 +26,39 @@ export default class MyChartContainer extends React.Component<Props> {
         amostras.push(element);
       });
       this.setState({ items: amostras });
-      this.setState({ is3D: !this.state.is3D });
+      this.setState({ typeChart: !this.state.typeChart });
     });
   }
 
+  componentWillMount(){
+    this.forceUpdate()
+  }
   onChangeCheckbox = e => {
     if (e.value == '0') {
-      this.setState({ is3D: true });
+      this.setState({ typeChart: 1 });
     } else if (e.value == '1') {
-      this.setState({ is3D: false, horizontal: 'P1', vertical: 'P2' });
+      this.setState({ typeChart: 2});
     } else if (e.value == '2') {
-      this.setState({ is3D: false, horizontal: 'P2', vertical: 'P3' });
+      this.setState({ typeChart: 3});
     } else if (e.value == '3') {
-      this.setState({ is3D: false, horizontal: 'P1', vertical: 'P3' });
+      this.setState({ typeChart: 4});
     }
   };
 
-  teste() {
-    if (this.state.is3D) {
+  myChart() {
+    if (this.state.typeChart == 1) {
     return (<Chart3D list={this.state.items} />);
-    } else {
+    }
+    if (this.state.typeChart == 2) {
+      return (
+        <Chart2D
+          list={this.state.items}
+          horizontal='P1'
+          vertical='P2'
+        />
+      );
+    }
+    if (this.state.typeChart == 3) {
       return (
         <Chart2D
           list={this.state.items}
@@ -54,10 +67,19 @@ export default class MyChartContainer extends React.Component<Props> {
         />
       );
     }
+     if (this.state.typeChart == 4) {
+      return (
+        <Chart2D
+          list={this.state.items}
+          horizontal='P1'
+          vertical='P3'
+        />
+      );
+    }
   }
 
   render() {
-    const is3D = this.state.is3D;
+    const typeChart = this.state.typeChart;
     const horizontal = this.state.horizontal;
     const vertical = this.state.vertical;
     return (
@@ -65,7 +87,7 @@ export default class MyChartContainer extends React.Component<Props> {
         <div align="center" style={{ paddingTop: '2.8rem' }}>
           <ChangeGraphComponent change={this.onChangeCheckbox} />
         </div>
-        {this.teste()}
+        {this.myChart()}
       </div>
     );
   }

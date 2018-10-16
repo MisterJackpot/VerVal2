@@ -28,36 +28,38 @@ export default class Chart3D extends PureComponent<Props> {
 
   getOption = () => ({
     grid3D: {},
-    xAxis3D: {
-      type: 'value'
-    },
+    xAxis3D: [{
+      type: 'value', gridIndex: 0, name: 'P1'
+    }],
     yAxis3D: {
-      type: 'value'
+      type: 'value', gridIndex: 0, name: 'P2'
     },
     zAxis3D: {
-      type: 'value'
+      type: 'value', gridIndex: 0, name: 'P3'
+    },
+    tooltip: {
+      trigger: 'item',
+      enterable: true
     },
     dataset: {
-        dimensions: [
-            'x',
-            'y',
-            'z',
-        ],
         source: this.props.list
     },
-
     series: [
       {
         name: '3D',
         type: 'scatter3D',
         symbolSize: this.state.symbolSize,
+        dimensions: [
+          'P1',
+          'P2',
+          'P3',
+        ],
         encode: {
-                x: 'x',
-                y: 'y',
-                z: 'z',
+                x: 'P1',
+                y: 'P2',
+                z: 'P3',
         },
-       
-        }
+      }
     ]
   })
   render() {
