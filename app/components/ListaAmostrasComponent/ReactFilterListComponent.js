@@ -39,15 +39,16 @@ export default class FilteredList extends Component<Props> {
       <div className={styles['mount-point']}>
         <div className={styles.body}>
           <div align='center'>
-            <span className={styles.fontAmostras}>Amostras </span>
           </div>
           <input
             className={styles.input}
             type="text"
-            placeholder="Search"
+            placeholder="Pesquisar Amostra"
             onChange={this.filterList.bind(this)}
           />
-          <List items={this.state.items} />
+          <div>
+            <List items={this.state.items} />
+          </div>
         </div>
       </div>
     );

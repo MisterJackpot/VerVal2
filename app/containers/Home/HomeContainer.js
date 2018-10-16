@@ -15,7 +15,7 @@ import AmostraBO from '../../utils/BO/AmostraBO';
 type Props = {};
 
 export default class HomeContainer extends Component<Props> {
-
+ 
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +23,7 @@ export default class HomeContainer extends Component<Props> {
       loginPermit: false
     };
   }
+
 
   validarSenha = () => {
     validarSenhaLogin(this.state.password).then(result =>{
@@ -40,6 +41,12 @@ export default class HomeContainer extends Component<Props> {
     });
   }
 
+  validarPressEnter = (e) =>{
+    if(e.key === 'Enter'){
+      this.validarSenha();
+    }
+  }
+  
   onChange = (event) => {
     this.setState({password: event.target.value});
   };
@@ -52,8 +59,8 @@ export default class HomeContainer extends Component<Props> {
     return (
         <div className={styles.container} align="center" data-tid="container">
             <ImageWrapperComponent path={'Assets/federages.png'}/>
-            <InputComponent onChange={this.onChange}/> 
-            <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
+            <InputComponent onChange={this.onChange} onKeyPress={this.validarPressEnter}/> 
+            <NavigateButtonComponent text="Entrar"  click={this.validarSenha} autoFocus/>
 		</div>
     );
   }

@@ -21,33 +21,56 @@
 .displayblock {
     display: block;
   }
-  
+
 .displaynone {
     display: none;
   }
 
 .showmodal{
+  border-radius: 4px;
   background-color: rgb(7, 77, 34);
-  color: #ffffff;
   border: transparent;
-  border-radius: 0.5em;
-  width: 40%;
-  height: 193%;
-  min-width: 20%;
-  min-height: 192%;
+  color: #FFFFFF;
+  font-size: 1rem;
+  padding: 1rem;
   cursor: pointer;
-  position: relative;
-  left: 20%;
-  z-index: 1;
+  box-sizing: border-box;
+
 }
+
+.botaoAmostras {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.closeModalButton{
+  border-radius: 0.3rem;
+  position: absolute;
+  top: 102%;
+  right: 41%;
+  cursor: pointer;
+}
+
+.closeModalButton:hover{
+  transition: all 0.3s ease 0s;
+  background-color: rgb(63, 117, 84);
+}
+
 @media(min-width:701px){
   .pequeno{
-    visibility: hidden;
+    display: none;
+
+  }
+  .showmodal:hover {
+    transition: all 0.3s ease 0s;
+    background-color: rgb(63, 117, 84);
+  
   }
 }
 @media(max-width: 700px){
   .grande{
     display: none;
+
   }
   .pequeno{
     display: inline-block;
@@ -57,6 +80,10 @@
     border-top: 4%;
     min-height: 2rem;
     min-width: 2rem;
+    padding: 0 .5rem;
+  }
+  .showmodal:hover {
+    transition: all 0.3s ease 0s;
+    background-color: rgb(63, 117, 84);
   }
 }
-
