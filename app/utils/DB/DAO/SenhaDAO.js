@@ -16,8 +16,7 @@ const Senha = {
               if(err) {
                 throw err;
               }
-              r = result[1].senha;
-              console.log(result);
+              r = result[0].senha;
               resolve(r);
               
             }).on('error', err => {

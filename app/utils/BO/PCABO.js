@@ -13,13 +13,10 @@ import Amostra from "../DB/DAO/AmostraDAO";
 			})
 			return result
 		})
-		const pca = new PCA(arrayOfArraysOfNumbers);
-		return pca.getExplainedVariance().slice(0,3); 
-			// val2:pca.predict(arrayOfArraysOfNumbers)
-		// }
-	}
-	,
-		getXYZ: async() => {
+			const pca = new PCA(arrayOfArraysOfNumbers);
+			return pca.getExplainedVariance().slice(0,3); 
+		}
+		getPCA: async() => {
 			let promise = Amostra.getAllComp();
 			const amostras = await promise;
 			const PCA = require('ml-pca');
@@ -35,9 +32,22 @@ import Amostra from "../DB/DAO/AmostraDAO";
 			let aux = new PCA(arrayOfArraysOfNumbers).predict(arrayOfArraysOfNumbers);
 			for(let i = 0; i < aux.length;i++)
 				aux[i] = aux[i].slice(0,3);
-				
-			//  dataset is a two-dimensional array where rows represent the samples and columns the features
 			return  aux;
+	},
+		getAllDatas : async () => {
+			let promise = Amostra.getAllComp();
+			const amostras = await promise;
+			return this.RDPtoArray(amostras);
+	},
+	 	RDPtoArray(arrayOfObjects){ 
+			let arrayOfArraysOfNumbers = arrayOfObjects.map(a => {
+				let result = []
+				Object.keys(a).forEach(key => {
+					result.push(a[key])
+				})
+				return result
+			})
+			return arrayOfArraysOfNumbers;
 		}
-	}
+}
 export default PCA;

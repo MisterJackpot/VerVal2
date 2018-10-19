@@ -82,5 +82,4 @@ const AmostraDAO = {
     });
   }
 };
-
 export default AmostraDAO;
