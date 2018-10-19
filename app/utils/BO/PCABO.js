@@ -1,4 +1,4 @@
-import Amostra from "./DB/DAO/AmostraDAO";
+import Amostra from "../DB/DAO/AmostraDAO";
 
 	const PCA = {
 		getPCA : async () => {
