@@ -30,8 +30,6 @@ import Amostras from "../DB/DAO/AmostraDAO";
 				})
 				return result
 			})
-            amostra1Arr[0].splice(0,2);
-            amostra2Arr[0].splice(0,2);
             const { euclidean, squaredEuclidean } = require('ml-distance-euclidean');
             console.log(euclidean(amostra1Arr[0],amostra2Arr[0]));
         }

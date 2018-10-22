@@ -9,8 +9,7 @@ export default class AGNESComponent extends React.Component{
      
     async doAgnes(){
         let matrix = (await AGNES.clusterize());
-        console.log(matrix.children[1]);
-        console.log(matrix.children[0]);  
+        console.log(matrix);  
     }
     render() {
         const {path} = this.props
