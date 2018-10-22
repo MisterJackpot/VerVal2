@@ -6,6 +6,7 @@ import Chart2D from '../../components/MyCharts/Chart2D';
 import MyChartContainer from '../../containers/MyEchartContainer/MyEchartContainer'
 import ListContainer from '../../containers/ListaAmostras/ListaAmostrasContainer'
 import styles from './MainPage.css'
+import ListCorrelationContainer from '../../containers/ListCorrelationContainer/ListCorrelationContainer'
 type Props = {};
 
 export default class MainPage extends Component<Props> {
@@ -18,7 +19,7 @@ export default class MainPage extends Component<Props> {
                 <MyChartContainer/>
             </div>
             <div className={styles.rightContainer}>
-                <ListContainer/>
+                <ListCorrelationContainer/>
             </div>
       </div>
 
