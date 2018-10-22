@@ -32,6 +32,7 @@ const AmostraBO = {
               error(err);
             }
           );
+          document.getElementById("loadingText").style.display = "none";
         });
       stream.pipe(csvStream);
     });

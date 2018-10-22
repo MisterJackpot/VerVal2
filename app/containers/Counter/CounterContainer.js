@@ -15,7 +15,10 @@ export default class CounterPage extends Component<Props> {
 
   props: Props;
 
-  state = { show: false }
+  state = { 
+    show: false,
+    loading: true
+  }
 
   showModal = () => {
     this.setState({ show: true });
@@ -28,7 +31,9 @@ export default class CounterPage extends Component<Props> {
   }
 
   insereAmostras = (file) => {
-    console.log(this)
+    if(this.state.loading == true){
+      document.getElementById("loadingText").style.display = "block";
+    }
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
         result => {
@@ -71,6 +76,7 @@ export default class CounterPage extends Component<Props> {
         <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
         <div>
           <Modal show={this.state.show} handleClose={this.hideModal}>
+            <p id="loadingText" style={{display:'none'}}>Texto carregando</p>
             <UploadCsv acceptedFunction={this.insereAmostras}/>
           </Modal>
         </div>
