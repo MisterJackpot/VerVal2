@@ -29,7 +29,7 @@ import Amostra from "../DB/DAO/AmostraDAO";
 			})
 			let aux = new PCA(arrayOfArraysOfNumbers).predict(arrayOfArraysOfNumbers);
 			for(let i = 0; i < aux.length;i++)
-				aux[i] = aux[i].slice(0,3);
+				aux[i] = aux[i]
 			return  aux;
 	},
 		getAllDatas : async () => {

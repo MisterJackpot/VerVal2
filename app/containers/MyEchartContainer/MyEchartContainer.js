@@ -16,17 +16,16 @@ export default class MyChartContainer extends React.Component<Props> {
       items: []
     };
 
-    PCA.getPCA().then(result => {
+    PCA.getPCAData().then(result => {
       var amostras = [];
       var array = result;
       array.forEach(element => {
         amostras.push(element);
       });
-      this.setState({ items: amostras });
-      this.setState({ typeChart: !this.state.typeChart });
-      
+      this.setState({items: amostras});
     });
   }
+
 
   onClick = () => {
     this.setState({ typeChart: !this.state.typeChart });
