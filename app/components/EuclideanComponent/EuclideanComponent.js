@@ -7,10 +7,7 @@ type Props = {};
 export default class EuclideanComponent extends React.Component{
     props: Props;
     async doEuclidean(){
-
-        console.log(Euclides.getDistanceUsingID("082.1","082.1"));
-        console.log(Euclides.getDistanceUsingID("082.1","085.2"));
-        console.log(Euclides.getDistanceUsingID("082.1","086.1"));
+        console.log(Euclides.getAllCorrelation("082.2"));
     }
     
     
