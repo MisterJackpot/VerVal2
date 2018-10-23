@@ -59,7 +59,7 @@ export default class UploadCsv extends React.Component {
             display: 'table-cell'  
           }}
         >
-          <span style={{fontWeight:'bold'}}>Arraste um arquivo csv ou clique aqui.</span>
+          <span id="dropzoneText" style={{fontWeight:'bold'}}>Arraste um arquivo csv ou clique aqui.</span>
         </Dropzone>
       </div>
     );

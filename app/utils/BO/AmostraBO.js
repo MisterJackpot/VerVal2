@@ -33,6 +33,7 @@ const AmostraBO = {
             }
           );
           document.getElementById("loader").style.display = "none";
+          document.getElementById("dropzoneText").style.color = "black";
         });
       stream.pipe(csvStream);
     });

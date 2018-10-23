@@ -33,6 +33,7 @@ export default class CounterPage extends Component<Props> {
   insereAmostras = (file) => {
     if(this.state.loading == true){
       document.getElementById("loader").style.display = "block";
+      document.getElementById("dropzoneText").style.color = "transparent";
     }
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
@@ -62,6 +63,7 @@ export default class CounterPage extends Component<Props> {
       );
     } else {
       document.getElementById("loader").style.display = "none";
+      document.getElementById("dropzoneText").style.color = "black";
       Alert.warning('Formato de arquivo invalido', {
         position: 'top',
         effect: 'stackslide',
