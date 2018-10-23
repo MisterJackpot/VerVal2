@@ -32,7 +32,7 @@ export default class CounterPage extends Component<Props> {
 
   insereAmostras = (file) => {
     if(this.state.loading == true){
-      document.getElementById("loadingText").style.display = "block";
+      document.getElementById("loader").style.display = "block";
     }
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
@@ -61,6 +61,7 @@ export default class CounterPage extends Component<Props> {
         }
       );
     } else {
+      document.getElementById("loader").style.display = "none";
       Alert.warning('Formato de arquivo invalido', {
         position: 'top',
         effect: 'stackslide',
@@ -76,7 +77,7 @@ export default class CounterPage extends Component<Props> {
         <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
         <div>
           <Modal show={this.state.show} handleClose={this.hideModal}>
-            <p id="loadingText" style={{display:'none'}}>Texto carregando</p>
+            <div id="loader" className={styles.loader}></div>
             <UploadCsv acceptedFunction={this.insereAmostras}/>
           </Modal>
         </div>

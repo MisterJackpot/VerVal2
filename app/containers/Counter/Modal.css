@@ -87,3 +87,33 @@
     background-color: rgb(63, 117, 84);
   }
 }
+
+
+
+/* Loading */
+
+.loader {
+  border: 6px solid lightgrey;
+  border-radius: 50%;
+  border-top: 6px solid rgb(63, 117, 84);
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  display: none;
+  position: relative;
+  top: 2.3em;
+  left: 0.6em;
+  z-index: 10;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
