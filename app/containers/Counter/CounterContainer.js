@@ -70,7 +70,7 @@ export default class CounterPage extends Component<Props> {
         }
       );
     } else {
-      if(document.getElementById("dropzoneText").innerText = "Carregando..."){
+      if(document.getElementById("dropzoneText").innerText == "Carregando..."){
         document.getElementById("dropzoneText").innerText = "Arraste um arquivo csv ou clique aqui.";
       }
       document.getElementById("loader").style.display = "none";
