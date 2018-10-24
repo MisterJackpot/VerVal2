@@ -17,7 +17,7 @@ export default class CounterPage extends Component<Props> {
 
   state = { 
     show: false,
-    loading: true
+    loading: false
   }
 
   showModal = () => {
@@ -31,6 +31,7 @@ export default class CounterPage extends Component<Props> {
   }
 
   insereAmostras = (file) => {
+    this.setState({ loading: true });
     if(this.state.loading == true){
       document.getElementById("loader").style.display = "block";
       document.getElementById("dropzoneText").style.color = "transparent";
@@ -70,6 +71,7 @@ export default class CounterPage extends Component<Props> {
         timeout: 5000
       });
     }
+    this.setState({ loading: false });
   }
 
   render() {
