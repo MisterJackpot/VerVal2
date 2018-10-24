@@ -7,7 +7,7 @@ type Props = {};
 export default class EuclideanComponent extends React.Component{
     props: Props;
     async doEuclidean(){
-        console.log(Euclides.getAllCorrelation("082.2"));
+        console.log(await Euclides.getAllCorrelation("082.2"));
     }
     
     

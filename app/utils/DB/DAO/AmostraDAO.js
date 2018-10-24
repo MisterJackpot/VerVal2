@@ -93,6 +93,20 @@ const AmostraDAO = {
           })
         })
     });
+  },
+  getAllMaxMin: (id) => {
+    return new Promise((resolve,error) => {
+        const con = Connection.getConnection();
+        con.connect(function(err) {
+          if (err) throw err;
+          console.log('Connected!');
+          var sql = " SELECT MAX("+id+"),MIN("+id+") FROM AMOSTRAS ";
+           con.query(sql,function(err, result){
+            if(err) throw err;
+            resolve(result);
+          })
+        })
+    });
   }
 };
 export default AmostraDAO;
