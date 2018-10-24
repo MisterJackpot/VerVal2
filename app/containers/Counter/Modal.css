@@ -100,8 +100,8 @@
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
   display: none;
-  position: relative;
-  top: 6em;
+  position: absolute;
+  top: 1.8em;
   left: 7em;
   z-index: 10;
 }

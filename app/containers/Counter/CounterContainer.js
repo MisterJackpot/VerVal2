@@ -33,8 +33,15 @@ export default class CounterPage extends Component<Props> {
   insereAmostras = (file) => {
     this.setState({ loading: true });
     if(this.state.loading == true){
-      document.getElementById("loader").style.display = "block";
-      document.getElementById("dropzoneText").style.color = "transparent";
+      let width = window.matchMedia("(max-width: 500px)");
+      let height = window.matchMedia("(max-height: 500px)");
+      if (width.matches || height.matches) { 
+        document.getElementById("dropzoneText").innerText = "Carregando...";
+      }
+      else{
+        document.getElementById("dropzoneText").style.color = "transparent";
+        document.getElementById("loader").style.display = "block";
+      }
     }
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
@@ -63,6 +70,9 @@ export default class CounterPage extends Component<Props> {
         }
       );
     } else {
+      if(document.getElementById("dropzoneText").innerText = "Carregando..."){
+        document.getElementById("dropzoneText").innerText = "Arraste um arquivo csv ou clique aqui.";
+      }
       document.getElementById("loader").style.display = "none";
       document.getElementById("dropzoneText").style.color = "black";
       Alert.warning('Formato de arquivo invalido', {

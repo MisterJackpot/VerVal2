@@ -32,6 +32,11 @@ const AmostraBO = {
               error(err);
             }
           );
+          
+          //Parte do Loading do Modal
+          if(document.getElementById("dropzoneText").innerText = "Carregando..."){
+            document.getElementById("dropzoneText").innerText = "Arraste um arquivo csv ou clique aqui.";
+          }
           document.getElementById("loader").style.display = "none";
           document.getElementById("dropzoneText").style.color = "black";
         });
