@@ -86,7 +86,7 @@ export default class CounterPage extends Component<Props> {
 
   render() {
     return (
-      <div className={styles.botaoAmostras}>
+      <div align='center' className={styles.botaoAmostras}>
         <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
         <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
         <div>
@@ -103,13 +103,19 @@ export default class CounterPage extends Component<Props> {
 const Modal = ({ handleClose, show, children }) => {
 
   return (
-      <div className={(show ? styles.displayblock : styles.displaynone)}>
-      <section className={styles.modalmain}>
-          {children}
-        <button className={styles.closeModalButton} onClick={handleClose}>
+      <div align='center' className={(show ? styles.displayblock : styles.displaynone)}>
+        <div className={styles.back}>
+          blur
+        </div>
+        <div className={styles.modalmain}>
+          <div>
+            {children}
+          </div>
+          <button className={styles.closeModalButton} onClick={handleClose}>
           Fechar
         </button>
-      </section>
+      </div>
+
     </div>
   );
 };
