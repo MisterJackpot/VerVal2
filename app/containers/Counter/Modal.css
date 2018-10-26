@@ -91,15 +91,19 @@
   border: 0.8em solid lightgrey;
   border-radius: 50%;
   border-top: 0.8em solid rgb(63, 117, 84);
-  width: 3.3em;
-  height: 3.3em;
+  width: 3.6em;
+  height: 3.6em;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
   display: none;
   position: absolute;
+  margin: 2.2rem auto;
+  left:0;
+  right: 0;
+  z-index: 1;
+  
   /* top: 2.4em;
   left: 43.3em; */
-  z-index: 10;
 }
 
 /* Safari */
