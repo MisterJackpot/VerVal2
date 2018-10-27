@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MyChart from '../../components/MyCharts/Chart3D';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import AmostraBO from '../../utils/BO/AmostraBO';
@@ -15,7 +16,7 @@ export default class CounterPage extends Component<Props> {
 
   props: Props;
 
-  state = { 
+  state = {
     show: false,
     loading: false
   }
@@ -30,19 +31,18 @@ export default class CounterPage extends Component<Props> {
     console.log(this.state)
   }
 
+  showLoading = () =>{
+    this.setState({ loading: true});
+    console.log(this.state)
+  }
+
+  hideLoading = () =>{
+    this.setState({ loading: false});
+    console.log(this.state);
+  }
+
   insereAmostras = (file) => {
-    this.setState({ loading: true });
-    if(this.state.loading == true){
-      let width = window.matchMedia("(max-width: 500px)");
-      let height = window.matchMedia("(max-height: 500px)");
-      if (width.matches || height.matches) { 
-        document.getElementById("dropzoneText").innerText = "Carregando...";
-      }
-      else{
-        document.getElementById("dropzoneText").style.color = "transparent";
-        document.getElementById("loader").style.display = "block";
-      }
-    }
+    this.showLoading();
     if (file && file[0]) {
       AmostraBO.readCSV(file).then(
         result => {
@@ -51,16 +51,19 @@ export default class CounterPage extends Component<Props> {
             effect: 'stackslide',
             timeout: 5000
           });
+          this.hideLoading();
           this.hideModal();
         },
         err => {
           if (err.type == 'INVALID CSV') {
+            this.hideLoading();
             Alert.error("Dados no CSV em formato invalido", {
               position: 'top',
               effect: 'stackslide',
               timeout: 10000
             });
           } else {
+            this.hideLoading();
             Alert.error('Amostras repetidas, log salvo em ' + err, {
               position: 'top',
               effect: 'stackslide',
@@ -70,18 +73,13 @@ export default class CounterPage extends Component<Props> {
         }
       );
     } else {
-      if(document.getElementById("dropzoneText").innerText == "Carregando..."){
-        document.getElementById("dropzoneText").innerText = "Arraste um arquivo csv ou clique aqui.";
-      }
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("dropzoneText").style.color = "black";
+      this.hideLoading();
       Alert.warning('Formato de arquivo invalido', {
         position: 'top',
         effect: 'stackslide',
         timeout: 5000
       });
     }
-    this.setState({ loading: false });
   }
 
   render() {
@@ -91,8 +89,8 @@ export default class CounterPage extends Component<Props> {
         <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
         <div>
           <Modal show={this.state.show} handleClose={this.hideModal}>
-            <div id="loader" className={styles.loader}></div>
-            <UploadCsv acceptedFunction={this.insereAmostras}/>
+            <LoadingComponent show={this.state.loading}></LoadingComponent>
+            <UploadCsv acceptedFunction={this.insereAmostras} span={this.state.loading}/>
           </Modal>
         </div>
       </div>

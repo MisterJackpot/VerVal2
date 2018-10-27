@@ -11,3 +11,11 @@
     font-size: 1.5rem;
     cursor: crosshair;
 }
+
+.hidden{
+  color: transparent;
+}
+
+.visible{
+   color: black;
+}
