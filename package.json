@@ -221,7 +221,6 @@
     "ml-dataset-iris": "^1.0.0",
     "ml-pca": "^2.1.0",
     "mysql": "^2.16.0",
-    "pdfkit": "^0.8.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-dropzone": "^5.0.1",
