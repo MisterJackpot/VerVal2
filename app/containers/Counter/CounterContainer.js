@@ -102,10 +102,10 @@ const Modal = ({ handleClose, show, children }) => {
 
   return (
       <div align='center' className={(show ? styles.displayblock : styles.displaynone)}>
-        <div className={styles.back}>
+        <div className={styles.back} onClick={handleClose}>
           blur
         </div>
-        <div className={styles.modalmain}>
+        <div className={styles.modalmain} onClick={handleClose}>
           <div>
             {children}
           </div>
