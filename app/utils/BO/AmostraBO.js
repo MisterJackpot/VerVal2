@@ -85,7 +85,7 @@ const AmostraBO = {
   },
 
   getAmostras: () => {
-    return AmostraDAO.getIds().then(result => {
+    return AmostraDAO.getIdsData().then(result => {
       return result;
     });
   }
