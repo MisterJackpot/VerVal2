@@ -40,13 +40,13 @@ const AmostraDAO = {
     });
   },
 
-  getIds: () => {
+  getIdsData: () => {
     return new Promise((resolve,error) => {
         const con = Connection.getConnection();
         con.connect(function(err) {
           if (err) throw err;
           console.log('Connected!');
-          var sql = 'SELECT id FROM AMOSTRAS';
+          var sql = 'SELECT id, data_entrada FROM AMOSTRAS';
           con.query(sql,function(err, result){
             if(err) throw err;
             resolve(result);
