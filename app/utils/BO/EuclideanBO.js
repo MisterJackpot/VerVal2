@@ -36,6 +36,9 @@ import { normalize } from "path";
 			let allDelta = await Amostras.getAllDelta();
 			let allIds = await Amostras.getIds();
 			let dictionary = Array();
+			console.log(allMin)
+			console.log(allDelta)
+			console.log(allDB)
             //let allAmostrasBut = await Amostras.getAllButComp(amostraEscolhida);
 			//let amostra = await Amostras.getBytId(amostraEscolhida);
 			allMin = allMin.map(a => {
@@ -66,6 +69,7 @@ import { normalize } from "path";
 				})
 				return result
 			})
+			console.log(allDelta)
 			let normalized = Array();
 				for(let i = 0; i < allIds.length;i++){
 					normalized[allIds[i][0]] = Array()
@@ -79,20 +83,18 @@ import { normalize } from "path";
 					normalized[allIds[i][0]][j] = compNormalized;
 				}
 			}
-			let allDistance = Array()
-			//console.log(normalized[allIds[0][164]])
-			//console.log(normalized[amostraEscolhida])
-			// console.log(normalized[amostraEscolhida])
-			// console.log(normalized[allIds[0]])
 			// console.log(euclidean(normalized[amostraEscolhida],normalized[allIds[5]]))
 			// console.log("HIT")
-			console.log(dictionary);
+			console.log(normalized);
 			for(let i = 0 ; i< allDB.length-1;i++){
 				let distance = euclidean(normalized[amostraEscolhida],normalized[allIds[i]])
-				dictionary[allIds[i]] = distance
+				let maxDistance = Math.sqrt(661);
+				let aux = distance * 100;
+				let result = aux / maxDistance;
+				dictionary[allIds[i]] = Math.abs(result - 100) 
 			}
-
-			return allDistance.sort()
+			console.log(dictionary);
+			return null
 		}
 	}
 export default Euclidean;
