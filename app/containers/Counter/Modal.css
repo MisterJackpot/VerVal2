@@ -1,27 +1,22 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-}
-.modalmain {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-}
-
-.modalmain button{
-  background-color: rgb(7, 77, 34);
-  color: #ffffff;
-  border: transparent;
+.botaoAmostras {
+  box-sizing: border-box;
 }
 .displayblock {
-    display: block;
-  }
-
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.modalmain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transform: translateY(35%);
+}
 .displaynone {
     display: none;
   }
@@ -38,18 +33,19 @@
 
 }
 
-.botaoAmostras {
-  text-align: center;
+.closeModalButton{
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: rgb(7, 77, 34);
+  color: #ffffff;
+  border: transparent;
   box-sizing: border-box;
+  margin-top: .3rem;
+  padding: .3rem .6rem;
+  font-size: 1rem;
+
 }
 
-.closeModalButton{
-  border-radius: 0.3rem;
-  position: absolute;
-  top: 102%;
-  right: 41%;
-  cursor: pointer;
-}
 
 .closeModalButton:hover{
   transition: all 0.3s ease 0s;
@@ -64,7 +60,7 @@
   .showmodal:hover {
     transition: all 0.3s ease 0s;
     background-color: rgb(63, 117, 84);
-  
+
   }
 }
 @media(max-width: 700px){
@@ -86,4 +82,10 @@
     transition: all 0.3s ease 0s;
     background-color: rgb(63, 117, 84);
   }
+}
+
+.back{
+  background-color: rgba(255,255,255,0.8);
+  height: 100%;
+  color: transparent;
 }
