@@ -15,6 +15,9 @@
 .hidden{
   color: transparent;
 }
+.hidden::selection{
+  color: transparent;
+}
 
 .visible{
    color: black;
