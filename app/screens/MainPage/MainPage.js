@@ -12,15 +12,36 @@ type Props = {};
 export default class MainPage extends Component<Props> {
   props: Props;
 
-  render() {
+  constructor(props) {
+      super(props);
+      this.state = {
+        renderCorrelation: false
+    }
+  }
+
+  setRenderCorrelaction = () => {
+      this.setState(prevState => ({
+          renderCorrelation: !prevState.renderCorrelation}))
+  }
+
+  teste() {
+    if(renderCorrelation == false){
+        return (<div className={styles.rightContainer}>
+            <ListCorrelationContainer/>
+        </div>);
+      }
+      else {
+          return(<h1>CUZAO</h1>);
+      }
+  }
+
+  render() {    
     return (
       <div className={styles.container}>
             <div className={styles.leftContainer}>
                 <MyChartContainer/>
             </div>
-            <div className={styles.rightContainer}>
-                <ListCorrelationContainer/>
-            </div>
+            {this.teste()}
       </div>
 
   )}
