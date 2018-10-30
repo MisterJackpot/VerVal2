@@ -24,25 +24,17 @@ export default class MainPage extends Component<Props> {
           renderCorrelation: !prevState.renderCorrelation}))
   }
 
-  teste() {
-    if(renderCorrelation == false){
-        return (<div className={styles.rightContainer}>
-            <ListCorrelationContainer/>
-        </div>);
-      }
-      else {
-          return(<h1>CUZAO</h1>);
-      }
-  }
-
   render() {    
     return (
       <div className={styles.container}>
             <div className={styles.leftContainer}>
                 <MyChartContainer/>
             </div>
-            {this.teste()}
-      </div>
+            <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
+                <ListCorrelationContainer/>
+            ) : (<ListContainer/>)}
 
+            </div>
+      </div>
   )}
 }
