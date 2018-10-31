@@ -10,11 +10,8 @@ import Alert from 'react-s-alert';
 import styles from './Modal.css';
 
 const electron = require('electron');
-const fs = require('fs');
-const os = require('os');
 const BrowserWindow = electron.remote.BrowserWindow;
-const ipc = require('electron').ipcRenderer;
-const shell = electron.remote.shell;
+const ipcRenderer = require('electron').ipcRenderer;
 
 type Props = {};
 
@@ -25,24 +22,9 @@ export default class CounterPage extends Component<Props> {
   state = { show: false }
 
   gerarPDF = () => {
-    ipc.on('print-to-pdf' => {
-      console.log('primeiro ipc');
-      const pdfPath = ('./meuPdf.pdf');
-      const win = BrowserWindow.fromWebContents(event.sender);
-
-      win.webContents.printToPDF({}, (error, data) => {
-        if(error) return console.log(error.message);
-      
-        fs.writeFile(pdfPath, data, err => {
-          if(err) return console.log(err.message);
-        })
-      })
-    })
+    ipcRenderer.send('print-pdf')
   }
 
-  callPDF = (event) => {
-    ipc.send('print-to-pdf', event)
-  }
 
   showModal = () => {
     this.setState({ show: true });
@@ -96,7 +78,7 @@ export default class CounterPage extends Component<Props> {
       <div className={styles.botaoAmostras}>
         <button type='button' className={styles.showmodal + ' ' + styles.grande} onClick={this.showModal}>Adicionar Amostras</button>
         <button type='button' className={styles.showmodal + ' ' + styles.pequeno} onClick={this.showModal}>+</button>
-        <button type='button' onClick={this.callPDF}>Gerar PDF</button>
+        <button type='button' onClick={this.gerarPDF}>Gerar PDF</button>
         <div>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <UploadCsv acceptedFunction={this.insereAmostras}/>
