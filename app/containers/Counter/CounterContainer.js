@@ -12,6 +12,7 @@ import styles from './Modal.css';
 const electron = require('electron');
 const BrowserWindow = electron.remote.BrowserWindow;
 const ipcRenderer = require('electron').ipcRenderer;
+const {dialog} = require('electron').remote;
 
 type Props = {};
 
@@ -22,7 +23,17 @@ export default class CounterPage extends Component<Props> {
   state = { show: false }
 
   gerarPDF = () => {
-    ipcRenderer.send('print-pdf')
+    dialog.showSaveDialog({filters: [{
+      name: 'Adobe PDF',
+      extensions: ['pdf']
+    }]},
+    (fileName) => {
+      if (fileName === undefined){
+          console.log("You didn't save the file");
+          return;
+      }
+    })
+    //ipcRenderer.send('print-pdf')
   }
 
 
