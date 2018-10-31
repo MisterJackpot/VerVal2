@@ -25,7 +25,7 @@ export default class MyChartContainer extends React.Component<Props> {
         amostras.push(element);
       });
       this.setState({ items: amostras });
-      this.setState({ typeChart: !this.state.typeChart });
+      this.setState({ typeChart: 1 });
     });
   }
 
