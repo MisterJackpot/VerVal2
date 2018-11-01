@@ -11,7 +11,6 @@ import InputComponent from '../../components/LoginInputComponent/InputComponent'
 import { Redirect } from 'react-router';
 import Alert from 'react-s-alert';
 import AmostraBO from '../../utils/BO/AmostraBO';
-import EuclideanComponent from '../../components/EuclideanComponent/EuclideanComponent.js';
 
 type Props = {};
 
@@ -55,7 +54,6 @@ export default class HomeContainer extends Component<Props> {
             <ImageWrapperComponent path={'Assets/federages.png'}/>
             <InputComponent onChange={this.onChange}/> 
             <NavigateButtonComponent text="Entrar" click={this.validarSenha}/>
-            <EuclideanComponent text='EUCLIDES'/>
 		</div>
     );
   }
