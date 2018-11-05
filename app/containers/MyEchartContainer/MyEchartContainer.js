@@ -19,7 +19,7 @@ export default class MyChartContainer extends React.Component<Props> {
       items: []
     };
 
-    PCA.getPCA().then(result => {
+    PCA.getPCAData().then(result => {
       var amostras = [];
       var array = result;
       array.forEach(element => {
