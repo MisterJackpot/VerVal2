@@ -9,7 +9,7 @@ export default class ListaAmostrasContainer extends Component<Props> {
   render() {
     return (
       <div>
-        <ListCorrelation amostra = "OPA"></ListCorrelation>
+        <ListCorrelation amostra = {this.props.amostra}></ListCorrelation>
       </div>
     );
   }

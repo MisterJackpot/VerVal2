@@ -20,8 +20,9 @@ export default class MainPage extends Component<Props> {
     }
   }
 
-  setAmostraSelecionada = (msg) => {
-    console.log(msg)
+  setAmostraSelecionada = (amostra) => {
+    this.setState( () => ({amostraSelecionada: amostra}) )
+    this.setRenderCorrelaction()
   }
 
   setRenderCorrelaction = () => {
@@ -36,8 +37,12 @@ export default class MainPage extends Component<Props> {
                 <MyChartContainer/>
             </div>
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
-                <ListCorrelationContainer/>
+                <ListCorrelationContainer amostra={this.state.amostraSelecionada}/>
             ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
+
+            <button onClick={this.setRenderCorrelaction}>
+              Voltar
+            </button>
 
             </div>
       </div>
