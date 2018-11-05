@@ -9,7 +9,7 @@ export default class List extends Component<Props> {
       <div>
         <ul className={styles.ul}>
           {this.props.items.map(item => (
-            <li className={styles.li} key={item}>
+            <li className={styles.li} key={item} onClick={() => this.props.setAmostraSelecionada(item)} >
               {item}
             </li>
           ))}

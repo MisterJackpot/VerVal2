@@ -9,7 +9,7 @@ export default class ListaAmostrasContainer extends Component<Props> {
   render() {
     return (
       <div>
-        <FilteredList/>
+        <FilteredList setAmostraSelecionada={this.props.setAmostraSelecionada}/>
         <CounterContainer/>
       </div>
     );

@@ -15,8 +15,13 @@ export default class MainPage extends Component<Props> {
   constructor(props) {
       super(props);
       this.state = {
-        renderCorrelation: false
+        renderCorrelation: false,
+        amostraSelecionada: ''
     }
+  }
+
+  setAmostraSelecionada = (msg) => {
+    console.log(msg)
   }
 
   setRenderCorrelaction = () => {
@@ -32,7 +37,7 @@ export default class MainPage extends Component<Props> {
             </div>
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
                 <ListCorrelationContainer/>
-            ) : (<ListContainer/>)}
+            ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
 
             </div>
       </div>
