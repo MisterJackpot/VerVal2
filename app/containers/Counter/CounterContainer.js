@@ -29,10 +29,18 @@ export default class CounterPage extends Component<Props> {
     }]});
     if(path){
       ipcRenderer.send('print-pdf',path)
-    }
-    else{
-      ipcRenderer.send('print-pdf',null)
-    }
+      Alert.success('PDF salvo em ' + path, {
+        position: 'top',
+        effect: 'stackslide',
+        timeout: 4000
+      })
+    }else {
+      Alert.error('Não foi possível salvar o PDF.' , {
+        position: 'top',
+        effect: 'stackslide',
+        timeout: 4000
+      })
+    }  
   }
 
 
