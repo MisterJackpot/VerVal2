@@ -95,8 +95,17 @@ app.on('ready', async () => {
 ipcMain.on('print-pdf', function(event, path){
   let focusedWindow = BrowserWindow.getAllWindows()[0];
   focusedWindow.webContents.printToPDF({landscape:true}, (error, data) => {
-    fs.writeFile(path, data, (error) => {
-      console.log(error);
-    })
+    if(path!=null){
+      fs.writeFile(path, data, (error) => {
+        console.log(error);
+      })
+    }
+    else{
+      let d = new Date();
+      d.getTime();
+      fs.writeFile('./'+d+'.pdf', data, (error) => {
+        console.log(error);
+      })
+    }
   })
 });

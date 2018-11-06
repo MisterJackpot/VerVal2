@@ -30,6 +30,9 @@ export default class CounterPage extends Component<Props> {
     if(path){
       ipcRenderer.send('print-pdf',path)
     }
+    else{
+      ipcRenderer.send('print-pdf',null)
+    }
   }
 
 
