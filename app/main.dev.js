@@ -92,10 +92,11 @@ app.on('ready', async () => {
   menuBuilder.buildMenu();
 });
 
-ipcMain.on('print-pdf', function(){
-  let focusedWindow    = BrowserWindow.getFocusedWindow();
+ipcMain.on('print-pdf', function(event, path){
+  let focusedWindow = BrowserWindow.getAllWindows()[0];
   focusedWindow.webContents.printToPDF({landscape:true}, (error, data) => {
-    fs.writeFile('../teste.pdf', data, (error) => {
+    fs.writeFile(path, data, (error) => {
+      console.log(error);
     })
   })
 });

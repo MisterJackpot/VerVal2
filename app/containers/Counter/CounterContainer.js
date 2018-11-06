@@ -23,17 +23,13 @@ export default class CounterPage extends Component<Props> {
   state = { show: false }
 
   gerarPDF = () => {
-    dialog.showSaveDialog({filters: [{
+    let path = dialog.showSaveDialog({filters: [{
       name: 'Adobe PDF',
       extensions: ['pdf']
-    }]},
-    (fileName) => {
-      if (fileName === undefined){
-          console.log("You didn't save the file");
-          return;
-      }
-    })
-    //ipcRenderer.send('print-pdf')
+    }]});
+    if(path){
+      ipcRenderer.send('print-pdf',path)
+    }
   }
 
 
