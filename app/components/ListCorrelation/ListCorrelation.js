@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
 import List from './List';
 import styles from './ListCorrelation.css';
-import AmostraBO from '../../utils/BO/AmostraBO';
+import EuclideanBO from '../../utils/BO/EuclideanBO';
 
 export default class FilteredList extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      initialItems: ["OPA x UHUM", "MEUS x JESUS", "MEUS x JESUS",
-                    "OPA x UHUM", "MEUS x JESUS", "MEUS x JESUS",
-                    "OPA x UHUM", "MEUS x JESUS", "MEUS x JESUS",
-                    "OPA x UHUM", "MEUS x JESUS", "MEUS x JESUS"],
-      items: []
+      initialItems: [[]],
+      items: [[]]
     };
+
+    EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, 80).then(result =>{
+      var amostras = [[]];
+      var array = result;
+      console.log(result)
+      array.forEach(element => {
+        amostras.push(element);
+        this.state.initialItems.push(element);
+      });
+      this.state.initialItems.shift();
+      this.state.initialItems.shift();
+      this.setState({initialItems:amostras});
+    });
   }
 
   componentWillMount() {
     this.setState({ items: this.state.initialItems });
-  }
-
-  filterList(event) {
-    let updatedList = this.state.initialItems;
-    updatedList = updatedList.filter(
-      item => item.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-    );
-    this.setState({ items: updatedList });
   }
 
   render() {
@@ -34,12 +36,6 @@ export default class FilteredList extends Component<Props> {
           <div align='center'>
           <h1>{this.props.amostra}</h1>
           </div>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Pesquisar Amostra"
-            onChange={this.filterList.bind(this)}
-          />
           <div>
             <List items={this.state.items} />
           </div>
