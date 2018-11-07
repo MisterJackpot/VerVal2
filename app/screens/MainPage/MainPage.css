@@ -13,3 +13,14 @@
   .rightContainer {
     flex: 1;
   }
+
+  .button {
+    border-radius: 4px;
+    background-color: rgb(7, 77, 34);
+    border: transparent;
+    color: #FFFFFF;
+    font-size: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    box-sizing: border-box;
+}

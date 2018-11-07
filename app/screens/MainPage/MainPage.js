@@ -37,13 +37,13 @@ export default class MainPage extends Component<Props> {
                 <MyChartContainer/>
             </div>
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
+              <div>
+                <button className={styles.button} onClick={this.setRenderCorrelaction}>
+                    Voltar
+                </button>
                 <ListCorrelationContainer amostra={this.state.amostraSelecionada}/>
+              </div>
             ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
-
-            <button onClick={this.setRenderCorrelaction}>
-              Voltar
-            </button>
-
             </div>
       </div>
   )}
