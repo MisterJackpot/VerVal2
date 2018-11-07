@@ -2,6 +2,7 @@ import AmostraDAO from '../DB/DAO/AmostraDAO';
 import { element } from 'prop-types';
 const fs = require('fs');
 const csv = require('fast-csv');
+const path = require('path');
 
 const AmostraBO = {
   readCSV: file => {
@@ -40,35 +41,34 @@ const AmostraBO = {
   insert: amostra => {
     return new Promise((resolve, error) => {
       AmostraDAO.getIds().then(result => {
-        console.log(result);
         var aux = '';
         var errorList = [];
-        amostra.forEach(element => {
-          aux = '';
-          aux = result.find(id => {
-            return (id.id = element[0]);
-          });
-
-          if (aux != void 0) errorList.push(aux.id);
+        var results = result.map((value,index,array) =>{
+            return value.id;
         });
-
-        console.log(errorList)
-        console.log(amostra)
+        amostra.forEach(element => {
+          if (results.includes(element[0])){ 
+            errorList.push(element[0]);
+          }
+        });
         if (errorList.length > 0) {
           let textError = 'Amostras já existentes:\n';
           errorList.forEach(element => {
             textError = textError.concat(element + '\n');
           });
-          const dir = './log';
+          const dir = 'log';
           if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
           }
-          var date = new Date()
+          let date = new Date()
             .toISOString()
-            .replace(/T/, ' ')
-            .replace(/\..+/, '');
-          const f = './log/AmostrasRepetidas ' + date + '.txt';
-          const file = fs.writeFile(f, textError, err => {
+            .replace(/T/, '_')
+            .replace(/\..+/, '')
+            .replace(/:/g,"-");
+          const p = 'AmostrasRepetidas_' + date + '.txt';
+          let f = path.join(dir,p);
+          console.log(f);
+          const file = fs.writeFileSync(f, textError, err => {
             if (err) throw err;
           });
           error(f);
@@ -85,7 +85,7 @@ const AmostraBO = {
   },
 
   getAmostras: () => {
-    return AmostraDAO.getIds().then(result => {
+    return AmostraDAO.getIdsData().then(result => {
       return result;
     });
   }
