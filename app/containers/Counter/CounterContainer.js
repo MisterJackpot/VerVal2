@@ -24,7 +24,7 @@ export default class CounterPage extends Component<Props> {
 
   gerarPDF = () => {
     let path = dialog.showSaveDialog({filters: [{
-      name: 'Adobe PDF',
+      name: 'PDF',
       extensions: ['pdf']
     }]});
     if(path){
@@ -35,7 +35,7 @@ export default class CounterPage extends Component<Props> {
         timeout: 4000
       })
     }else {
-      Alert.error('Não foi possível salvar o PDF.' , {
+      Alert.error('Operação cancelada.' , {
         position: 'top',
         effect: 'stackslide',
         timeout: 4000
