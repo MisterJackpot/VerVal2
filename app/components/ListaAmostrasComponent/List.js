@@ -8,9 +8,9 @@ export default class List extends Component<Props> {
     return (
       <div>
         <ul className={styles.ul}>
-          {this.props.items.map(item => (
-            <li className={styles.li} key={item} onClick={() => this.props.setAmostraSelecionada(item)} >
-              {item}
+          {this.props.itemsId.map(item => (
+            <li className={styles.li} key={item.id} onClick={() => this.props.setAmostraSelecionada(item.id)} >
+              {item.id} {item.data_entrada.toLocaleDateString()}
             </li>
           ))}
         </ul>

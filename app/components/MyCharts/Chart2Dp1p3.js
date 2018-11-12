@@ -8,7 +8,7 @@ import styles from './MyChart.css';
 
 
 
-export default class Chart2D extends PureComponent<Props> {
+export default class Chart2Dp1p3 extends PureComponent<Props> {
   props: Props;
 
   constructor(props) {
@@ -21,8 +21,8 @@ export default class Chart2D extends PureComponent<Props> {
           data: this.props.list,
           dimensions: ['P1','P2','P3'],
           encode: {
-            x: this.props.horizontal,
-            y: this.props.vertical
+            x: 'P1',
+            y: 'P3'
           },
         }
       ],
@@ -35,7 +35,7 @@ export default class Chart2D extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = this.state.series;
+    const seriesU = this.state.series;
     this.setState({
       series: seriesU
     });
@@ -44,29 +44,31 @@ export default class Chart2D extends PureComponent<Props> {
   getOption = () => ({
     grid: {},
     xAxis: {
-        type: 'value'
+      type: 'value'
     },
     yAxis: {
-        type: 'value'
+      type: 'value'
     },
     tooltip: {
       trigger: 'item',
       enterable: true
-     },
+    },
     dataset: {
-        source: this.props.list
-      },
+      source: this.props.list
+    },
     series: this.state.series
   })
 
   render() {
     return (
       <div className={styles.opa2D}>
-        <div className={styles.backButton} data-tid="backButton">
-        </div>
+        <div className={styles.backButton} data-tid="backButton" />
         <div className={styles.parent}>
-          <ReactEcharts option={this.getOption()} lazyUpdate={true}  
-                        style={{ height: '100%' }}/>
+          <ReactEcharts
+            option={this.getOption()}
+            lazyUpdate
+            style={{ height: '100%' }}
+          />
         </div>
       </div>
     );
