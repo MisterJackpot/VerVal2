@@ -19,9 +19,10 @@ export default class MyChartContainer extends React.Component<Props> {
       items: []
     };
 
-    PCA.getPCA().then(result => {
-      const amostras = [];
-      result.forEach(element => {
+    PCA.getPCAData().then(result => {
+      var amostras = [];
+      var array = result;
+      array.forEach(element => {
         amostras.push(element);
       });
       this.setState({ items: amostras });
@@ -56,7 +57,7 @@ export default class MyChartContainer extends React.Component<Props> {
       return (
         <Chart2Dp1p2
           list={this.state.items}
-          horizontal='P1'
+           horizontal='P1'
           vertical='P2'
         />
       );

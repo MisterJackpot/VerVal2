@@ -50,7 +50,7 @@ export default class FilteredList extends Component<Props> {
             onChange={this.filterList.bind(this)}
           />
           <div>
-            <List itemsId={this.state.items} />
+            <List itemsId={this.state.items} setAmostraSelecionada={this.props.setAmostraSelecionada} />
           </div>
         </div>
       </div>
