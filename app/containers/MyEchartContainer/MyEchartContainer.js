@@ -51,11 +51,12 @@ export default class MyChartContainer extends React.Component<Props> {
 
   myChart() {
     if (this.state.typeChart === 1) {
-    return (<Chart3D list={this.state.items} />);
+    return (<Chart3D amostra={this.props.amostra} list={this.state.items} />);
     }
     if (this.state.typeChart === 2) {
       return (
         <Chart2Dp1p2
+          amostra={this.props.amostra}
           list={this.state.items}
            horizontal='P1'
           vertical='P2'
@@ -65,6 +66,7 @@ export default class MyChartContainer extends React.Component<Props> {
     if (this.state.typeChart === 3) {
       return (
         <Chart2Dp2p3
+          amostra={this.props.amostra}
           list={this.state.items}
           horizontal='P2'
           vertical='P3'
@@ -74,6 +76,7 @@ export default class MyChartContainer extends React.Component<Props> {
      if (this.state.typeChart === 4) {
       return (
         <Chart2Dp1p3
+          amostra={this.props.amostra}    
           list={this.state.items}
           horizontal='P1'
           vertical='P3'
@@ -92,4 +95,4 @@ export default class MyChartContainer extends React.Component<Props> {
       </div>
     );
   }
-}
+} 

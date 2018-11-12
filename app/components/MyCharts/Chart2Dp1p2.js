@@ -26,7 +26,22 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
           },
         }
       ],
-      symbolSize: 2.5
+      symbolSize: 2.5,
+      series_test: [
+        {
+          name: '2D',
+          type: 'effectScatter',
+          rippleEffect: {
+              brushType: 'stroke'
+          },
+          data: this.props.list,
+          dimensions: ['P1','P2','P3'],
+          encode: {
+            x: 'P1',
+            y: 'P2'
+          },
+        }
+      ]
     };
   }
 
@@ -41,7 +56,9 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
     });
   }
 
-  getOption = () => ({
+  getOption = () =>  (
+    this.props.amostra==undefined ? 
+    ({
     grid: {},
     xAxis: {
         type: 'value'
@@ -57,7 +74,24 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
         source: this.props.list
       },
     series: this.state.series
-  })
+    }) : ({
+    grid: {},
+    xAxis: {
+        type: 'value'
+    },
+    yAxis: {
+        type: 'value'
+    },
+    tooltip: {
+      trigger: 'item',
+      enterable: true
+     },
+    dataset: {
+        source: this.props.list
+      },
+    series: this.state.series_test
+    })
+  )
 
   render() {
     return (

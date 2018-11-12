@@ -33,8 +33,9 @@ export default class MainPage extends Component<Props> {
   render() {    
     return (
       <div className={styles.container}>
-            <div className={styles.leftContainer}>
-                <MyChartContainer/>
+            <div className={styles.leftContainer}>{this.state.renderCorrelation ? (
+              <MyChartContainer amostra={this.state.amostraSelecionada}/>
+            ) : (<MyChartContainer/>)}
             </div>
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
               <div>
