@@ -7,6 +7,8 @@ import MyChartContainer from '../../containers/MyEchartContainer/MyEchartContain
 import ListContainer from '../../containers/ListaAmostras/ListaAmostrasContainer'
 import styles from './MainPage.css'
 import ListCorrelationContainer from '../../containers/ListCorrelationContainer/ListCorrelationContainer'
+import PDFButtonComponent from '../../components/PDFButtonComponent/PDFButtonComponent';
+
 type Props = {};
 
 export default class MainPage extends Component<Props> {
@@ -38,10 +40,11 @@ export default class MainPage extends Component<Props> {
             </div>
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
               <div>
+                <ListCorrelationContainer amostra={this.state.amostraSelecionada}/>
                 <button className={styles.button} onClick={this.setRenderCorrelaction}>
                     Voltar
                 </button>
-                <ListCorrelationContainer amostra={this.state.amostraSelecionada}/>
+                <PDFButtonComponent></PDFButtonComponent>
               </div>
             ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
             </div>
