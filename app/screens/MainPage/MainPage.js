@@ -41,10 +41,12 @@ export default class MainPage extends Component<Props> {
             <div className={styles.rightContainer}>{this.state.renderCorrelation ? (
               <div>
                 <ListCorrelationContainer amostra={this.state.amostraSelecionada}/>
-                <button className={styles.button} onClick={this.setRenderCorrelaction}>
-                    Voltar
-                </button>
-                <PDFButtonComponent></PDFButtonComponent>
+                <div align='center' className={styles.alignButtons}>
+                  <button className={styles.button} onClick={this.setRenderCorrelaction}>
+                      Voltar
+                  </button>
+                  <PDFButtonComponent></PDFButtonComponent>
+                </div>
               </div>
             ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
             </div>
