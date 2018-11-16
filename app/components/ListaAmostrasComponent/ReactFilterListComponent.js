@@ -33,6 +33,7 @@ export default class FilteredList extends Component<Props> {
     );
     this.setState({ items: updatedList });
   }
+  
 
   render() {
     return (
