@@ -1,5 +1,9 @@
 {
   "HOME": "/",
+<<<<<<< HEAD
   "COUNTER": "/Counter",
   "MAINPAGE": "/MainPage"
+=======
+  "COUNTER": "/counter"
+>>>>>>> master
 }

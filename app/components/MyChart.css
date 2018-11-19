@@ -1,7 +1,15 @@
 .opa {
-  height: 100%;
+  height: 90%;
   padding: 0;
   margin: 0;
+}
+
+.backButton {
+  position: relative;
+  
+}
+.backButton a{
+  color: #D63715; 
 }
 
 .parent {

@@ -1,6 +1,10 @@
 // @flow
 import * as React from 'react';
+<<<<<<< HEAD
 import Alert from 'react-s-alert';
+=======
+
+>>>>>>> master
 type Props = {
   children: React.Node
 };
@@ -10,11 +14,6 @@ export default class App extends React.Component<Props> {
 
   render() {
     const { children } = this.props;
-  return( 
-    <div className="divApp">
-    <React.Fragment>{children}</React.Fragment>
-    <Alert stack={false} />
-    </div>
-  );
+    return <React.Fragment>{children}</React.Fragment>;
   }
 }
