@@ -1,10 +1,5 @@
 // @flow
 import * as React from 'react';
-<<<<<<< HEAD
-import Alert from 'react-s-alert';
-=======
-
->>>>>>> master
 type Props = {
   children: React.Node
 };
