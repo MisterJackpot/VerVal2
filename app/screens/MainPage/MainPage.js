@@ -20,7 +20,9 @@ export default class MainPage extends Component<Props> {
   constructor(props) {
       super(props);
       this.state = {
-        renderCorrelation: false,
+        render:false,
+        renderByCorrelation: false,
+        renderByData: false,
         amostraSelecionada: '',
         startDateInicio: moment(),
         startDateFinal: moment()
@@ -30,42 +32,56 @@ export default class MainPage extends Component<Props> {
 
   setAmostraSelecionada = (amostra) => {
     this.setState( () => ({amostraSelecionada: amostra}) )
-    this.setRenderCorrelaction()
+    this.filtrarCorrelacao();
   }
 
-  setRenderCorrelaction = () => {
+  setRender = () => {
       this.setState(prevState => ({
-          renderCorrelation: !prevState.renderCorrelation}))
+        render: !prevState.render}))
+        if(this.state.renderByCorrelation)
+        console.log("Estou usando a correlação!")
+        else if(this.state.renderByData)
+        console.log("Estou usando a data!");
   }
 
   selecionaDataInicio = (dateInicio) => {
     this.setState({
       startDateInicio: dateInicio
     });
-    console.log("Data inicio "+dateInicio)
   }
 
   selecionaDataFinal = (dateFinal) => {
     this.setState({
       startDateFinal: dateFinal
     });
-    console.log("Data final "+dateFinal);
+  }
+  unsetRender = () =>{
+    this.setState({
+      render: false
+    });
+    if(this.state.renderByCorrelation)
+    this.setState(prevState => ({ renderByCorrelation: false}));
+    else 
+    this.setState(prevState => ({ renderByData: false}));
+    
+  }
+  filtrarAmostras = async () => {
+    this.setState(prevState => ({ renderByData: !prevState.renderByData}));
+    this.setRender();
+  }
+  filtrarCorrelacao = async () => { 
+    this.setState(prevState => ({ renderByCorrelation: !prevState.renderByCorrelation}));  
+    this.setRender();
   }
 
-  filtrarAmostras = () => {
-    this.setRenderCorrelaction();
-    // let dateFinal =  new Date();
-    // dateFinal.setYear(this.state.startDateFinal.year());
-    // dateFinal.setMonth(this.state.startDateFinal.month());
-    // dateFinal.setDate(this.state.startDateFinal.date());
-    // let dateInitial = new Date();
-    // dateInitial.setYear(this.state.startDateInicio.year());
-    // dateInitial.setMonth(this.state.startDateInicio.month());
-    // dateInitial.setDate(this.state.startDateInicio.date());
-    // let resul = ( Filter.FilterDate(dateInitial, dateFinal).then(result => {console.log(result);}) );
-    // console.log( resul);
+  render() {
+    let containerRender;
+    if(this.state.render){
+      if(this.state.renderByData)
+       containerRender = <ListDataContainer dataInicio={this.state.startDateInicio} dataFinal = {this.state.startDateFinal}/>
+      else
+      containerRender = <ListCorrelationContainer amostra={this.state.amostraSelecionada} />
   }
-  render() {    
     return (
       <div className={styles.container}>
             <div className={styles.leftContainer}>            
@@ -74,19 +90,17 @@ export default class MainPage extends Component<Props> {
               <button onClick={this.filtrarAmostras}>Filtrar</button>
               <MyChartContainer/>                 
             </div>
-            <div className={styles.rightContainer}>{this.state.renderCorrelation ? 
-            (
+            <div className={styles.rightContainer}>
+            {this.state.render ? (
               <div>
-                <button className={styles.button} onClick={this.setRenderCorrelaction}>
+                <button className={styles.button} onClick={this.unsetRender}>
                     Voltar
                 </button>
-                <ListDataContainer dataInicio={this.state.startDateInicio} dataFinal = {this.state.startDateFinal}/>
+                {containerRender}
               </div>
-            ) : 
-            (
-              <ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />
-            )}
+            ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada}/>)}
             </div>
+
       </div>
   )}
 }

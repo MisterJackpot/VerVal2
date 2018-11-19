@@ -26,6 +26,7 @@ import Filtro from "./FilterBO";
 				})
 				return result
 			})
+			console.log(arrayOfArraysOfNumbers)
 			let allData = await Amostra.getData();
 			allData = allData.map(a => {
 				let result = []
@@ -35,9 +36,10 @@ import Filtro from "./FilterBO";
 				return result
 			})
 			let aux = new PCA(arrayOfArraysOfNumbers).predict(arrayOfArraysOfNumbers);
-			
-			//Filtro.FilterDate([aux, allData], "2018-09-12","2018-09-02");
-			return  aux;
+			for(let i =0 ; i < aux.length;i++)
+				aux[i] = aux[i].slice(0,3);
+				console.log(aux);
+				return  aux;
 	},
 		getAllDatas : async () => {
 			let promise = Amostra.getAllComp();

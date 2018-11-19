@@ -14,17 +14,14 @@ export default class FilteredDataList extends Component<Props> {
     };
 
     FilterBO.FilterDate(this.props.dataInicio, this.props.dataFinal).then(result =>{
-      console.log("YAY CHEGOU")
-      console.log(result)
-      //  var amostras = [[]];
-      //  var array = result;
-      //  array.forEach(element => {
-      //    amostras.push(element);
-      //    this.state.initialItems.push(element);
-      //  });
-      //  this.state.initialItems.shift();
-      //  this.state.initialItems.shift();
-      //  this.setState({initialItems:amostras});
+        var amostras = [[]];
+        var array = result;
+        array.forEach(element => {
+          amostras.push(element);
+          this.state.initialItems.push(element);
+        });
+        this.state.initialItems.shift();
+        this.setState({initialItems:amostras});
     });
   }
 

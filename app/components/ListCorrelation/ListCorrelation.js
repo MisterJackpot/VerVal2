@@ -14,7 +14,6 @@ export default class FilteredList extends Component<Props> {
     EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, 80).then(result =>{
       var amostras = [[]];
       var array = result;
-      console.log(result)
       array.forEach(element => {
         amostras.push(element);
         this.state.initialItems.push(element);
