@@ -14,8 +14,6 @@ export default class FilteredList extends Component<Props> {
     AmostraBO.getAmostras().then(result =>{
       var amostras = [];
       var array = result;
-      let test = JSON.stringify(result)
-      console.log( test);
       array.forEach(element => {
         amostras.push(element);
         this.state.initialItems.push(element);

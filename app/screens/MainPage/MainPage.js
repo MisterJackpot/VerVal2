@@ -84,10 +84,12 @@ export default class MainPage extends Component<Props> {
     return (
       <div className={styles.container}>
             <div className={styles.leftContainer}>            
-              <DatePicker dateFormat="DD/MM/YYYY"  selected={this.state.startDateInicio}  onChange={this.selecionaDataInicio} />
-              <DatePicker dateFormat="DD/MM/YYYY"  selected={this.state.startDateFinal}  onChange={this.selecionaDataFinal} />
-              <button onClick={this.filtrarAmostras}>Filtrar</button>
-              <MyChartContainer/>                 
+              <MyChartContainer/>
+              <div className={styles.datePickerDiv}>            
+                <DatePicker className={styles.datePicker} dateFormat="DD/MM/YYYY"  selected={this.state.startDateInicio}  onChange={this.selecionaDataInicio} />
+                <DatePicker className={styles.datePicker} dateFormat="DD/MM/YYYY"  selected={this.state.startDateFinal}  onChange={this.selecionaDataFinal} />
+                <button className={styles.button} onClick={this.filtrarAmostras}>Filtrar</button>
+              </div>
             </div>
             <div className={styles.rightContainer}>
             {this.state.render ? (
