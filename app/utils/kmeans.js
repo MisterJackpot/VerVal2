@@ -1,4 +1,3 @@
-import {data} from './../utils/Data';
 import {clustering} from 'echarts-stat';
 import 'echarts-gl';
 

@@ -76,12 +76,11 @@ export default class MainPage extends Component<Props> {
 
   render() {
     let containerRender;
-    if(this.state.render){
+    if(this.state.render)
       if(this.state.renderByData)
        containerRender = <ListDataContainer dataInicio={this.state.startDateInicio} dataFinal = {this.state.startDateFinal}/>
       else
       containerRender = <ListCorrelationContainer amostra={this.state.amostraSelecionada} />
-  }
     return (
       <div className={styles.container}>
             <div className={styles.leftContainer}>            

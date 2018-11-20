@@ -3,12 +3,18 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
+@import "~react-s-alert/dist/s-alert-default.css";
+@import "~react-s-alert/dist/s-alert-css-effects/stackslide.css";
+@import "~react-datepicker/dist/react-datepicker.css";
 
 body {
   position: relative;
   height: 100vh;
   font-family: Arial, Helvetica, Helvetica Neue, serif;
-  overflow-y: hidden;
+  overflow: hidden;
+  margin: 0;
+  border: 8px transparent solid;
+  box-sizing: border-box;
 }
 
 h2 {
@@ -35,4 +41,8 @@ a:hover {
   opacity: 1;
   text-decoration: none;
   cursor: pointer;
+}
+
+.divApp {
+  height: 100%;
 }

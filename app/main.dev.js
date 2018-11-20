@@ -11,7 +11,9 @@
  * @flow
  */
 import { app, BrowserWindow } from 'electron';
+const ipcMain = require('electron').ipcMain
 import MenuBuilder from './menu';
+const fs = require('fs');
 
 let mainWindow = null;
 
@@ -88,4 +90,22 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+});
+
+ipcMain.on('print-pdf', function(event, path){
+  let focusedWindow = BrowserWindow.getAllWindows()[0];
+  focusedWindow.webContents.printToPDF({landscape:true}, (error, data) => {
+    if(path!=null){
+      fs.writeFile(path, data, (error) => {
+        console.log(error);
+      })
+    }
+    else{
+      let d = new Date();
+      d.getTime();
+      fs.writeFile('./'+d+'.pdf', data, (error) => {
+        console.log(error);
+      })
+    }
+  })
 });

@@ -14,9 +14,11 @@ export default class FilteredList extends Component<Props> {
     AmostraBO.getAmostras().then(result =>{
       var amostras = [];
       var array = result;
+      let test = JSON.stringify(result)
+      console.log( test);
       array.forEach(element => {
-        amostras.push(element.id);
-        this.state.initialItems.push(element.id);
+        amostras.push(element);
+        this.state.initialItems.push(element);
       });
       this.setState({initialItems:amostras});
     });
@@ -29,11 +31,12 @@ export default class FilteredList extends Component<Props> {
   filterList(event) {
     let updatedList = this.state.initialItems;
     updatedList = updatedList.filter(
-      item => item.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-    );
+      item => {
+      let pesq = item.id + " " + item.data_entrada.toLocaleDateString()
+      return pesq.toLowerCase().search(event.target.value.toLowerCase()) !== -1
+    });
     this.setState({ items: updatedList });
   }
-  
 
   render() {
     return (
@@ -48,7 +51,7 @@ export default class FilteredList extends Component<Props> {
             onChange={this.filterList.bind(this)}
           />
           <div>
-            <List items={this.state.items} setAmostraSelecionada={this.props.setAmostraSelecionada} />
+            <List itemsId={this.state.items} setAmostraSelecionada={this.props.setAmostraSelecionada} />
           </div>
         </div>
       </div>
