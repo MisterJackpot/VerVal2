@@ -88,7 +88,7 @@ export default class MainPage extends Component<Props> {
               <div className={styles.datePickerDiv}>            
                 <DatePicker className={styles.datePicker} dateFormat="DD/MM/YYYY"  selected={this.state.startDateInicio}  onChange={this.selecionaDataInicio} />
                 <DatePicker className={styles.datePicker} dateFormat="DD/MM/YYYY"  selected={this.state.startDateFinal}  onChange={this.selecionaDataFinal} />
-                <button className={styles.button} onClick={this.filtrarAmostras}>Filtrar</button>
+                <button className={styles.button} onClick={!this.state.renderByData ? this.filtrarAmostras:null}>Filtrar</button>
               </div>
             </div>
             <div className={styles.rightContainer}>

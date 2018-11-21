@@ -4,14 +4,14 @@ import AmostraDAO from "../DB/DAO/AmostraDAO";
         FilterDate: async(dataMenor,dataMaior) => {
             let arrId = await AmostraDAO.getIdsData();
             let arr = await AmostraDAO.getAllCompData();
+            console.log(new Date(dataMenor))
             arr = utils.RDPToArray(arr);
             arrId = utils.RDPToArray(arrId);
             let listaFiltrada = []
-            console.log(arrId[0][0])
             for(let i = 0; i < arrId.length;i++)
-                arrId[i][1] ="\t"+ new Date(arrId[i][1]).getDate()+"/"+new Date(arrId[i][1]).getMonth()+"/"+new Date(arrId[i][1]).getFullYear();
+                arrId[i][1] ="\t"+ new Date(arrId[i][1]).getDate()+"/"+(new Date(arrId[i][1]).getMonth() + 1 )+"/"+new Date(arrId[i][1]).getFullYear();
             for(let i = 0; i < arr.length; i++)
-                if(new Date(arr[i][0]) >= dataMenor && new Date(arr[i][0]) <= dataMaior)
+                if(new Date(arr[i][0]) > new Date(dataMenor) && new Date(arr[i][0]) <= new Date(dataMaior))
                     listaFiltrada.push([arr[i].slice(1), arrId[i]]);
             return listaFiltrada
         }
