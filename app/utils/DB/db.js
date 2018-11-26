@@ -5,8 +5,8 @@ const Connection = {
 
     const con = mysql.createConnection({
       host: "localhost",
-      user: "vitor",
-      password: "senha123",
+      user: "root",
+      password: "senha",
       database: "rastreamento"
     });
 

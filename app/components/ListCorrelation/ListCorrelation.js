@@ -45,8 +45,14 @@ export default class FilteredList extends Component<Props> {
         <div className={styles.body}>
           <div align='center'>
           <h1>{this.props.amostra}</h1>
-          <input onChange={this.handleChange.bind(this)}></input>
-          <button onClick={() => this.getCorrelations(this.state.percentState)}>Salvar</button>
+          
+            <input 
+              className={styles['input']} 
+              onChange={this.handleChange.bind(this)}
+              placeholder="Correlação Desejada"
+            />
+          
+          <button className={styles['button']} onClick={() => this.getCorrelations(this.state.percentState)}>Salvar</button>
           </div>
           <div>
             <List items={this.state.items} />
