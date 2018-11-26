@@ -58,6 +58,18 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
     });
   }
 
+  removeElementFromList(id) {
+    let arr = [];
+    for(let i = 0; i<this.props.list.length; i++){
+      if(this.props.list[i][3] == id){
+        console.log("found");
+        continue;
+      }
+      arr.push(this.props.list[i]);
+    }
+    return arr;
+  }
+
   getOption = () =>  (
     this.props.amostra==undefined ? 
     ({
@@ -89,17 +101,13 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
       enterable: true
      },
     dataset: {
-        source: this.props.list
+        source: this.removeElementFromList(this.props.amostra)
       },
     series: this.state.series_test
     })
   )
 
   render() {
-    this.props.list.forEach(element => {
-      if(element[3] == this.props.amostra)
-        console.log("found")
-    });
     return (
       <div className={styles.opa2D}>
         <div className={styles.backButton} data-tid="backButton" />
