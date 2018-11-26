@@ -27,7 +27,9 @@ export default class FilteredList extends Component<Props> {
       });
       this.state.initialItems.shift();
       this.state.initialItems.shift();
-      this.setState({initialItems:amostras});
+      this.state.items.shift();
+      this.state.items.shift();
+      this.setState({items:amostras});
     });
   }
 
