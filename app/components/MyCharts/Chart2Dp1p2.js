@@ -96,6 +96,10 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
   )
 
   render() {
+    this.props.list.forEach(element => {
+      if(element[3] == this.props.amostra)
+        console.log("found")
+    });
     return (
       <div className={styles.opa2D}>
         <div className={styles.backButton} data-tid="backButton" />
