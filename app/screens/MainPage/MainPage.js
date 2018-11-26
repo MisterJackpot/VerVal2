@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import CounterContainer from '../../containers/Counter/CounterContainer';
 import Chart3D from '../../components/MyCharts/Chart3D';
-import Chart2D from '../../components/MyCharts/Chart2D';
+// import Chart2D from '../../components/MyCharts/';
 import DatePicker from "react-datepicker";
+import Chart2Dp1p2 from '../../components/MyCharts/Chart2Dp1p2';
 import MyChartContainer from '../../containers/MyEchartContainer/MyEchartContainer'
 import ListContainer from '../../containers/ListaAmostras/ListaAmostrasContainer'
 import ListDataContainer from '../../containers/ListDataContainer/ListDataContainer'

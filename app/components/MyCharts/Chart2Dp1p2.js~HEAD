@@ -8,7 +8,7 @@ import styles from './MyChart.css';
 
 
 
-export default class Chart2D extends PureComponent<Props> {
+export default class Chart2Dp1p2 extends PureComponent<Props> {
   props: Props;
 
   constructor(props) {
@@ -21,12 +21,27 @@ export default class Chart2D extends PureComponent<Props> {
           data: this.props.list,
           dimensions: ['P1','P2','P3'],
           encode: {
-            x: this.props.horizontal,
-            y: this.props.vertical
+            x: 'P1',
+            y: 'P2'
           },
         }
       ],
-      symbolSize: 2.5
+      symbolSize: 2.5,
+      series_test: [
+        {
+          name: '2D',
+          type: 'effectScatter',
+          rippleEffect: {
+              brushType: 'stroke'
+          },
+          data: this.props.list,
+          dimensions: ['P1','P2','P3'],
+          encode: {
+            x: 'P1',
+            y: 'P2'
+          },
+        }
+      ]
     };
   }
 
@@ -35,13 +50,15 @@ export default class Chart2D extends PureComponent<Props> {
   }
 
   update() {
-    var seriesU = this.state.series;
+    const seriesU = this.state.series;
     this.setState({
       series: seriesU
     });
   }
 
-  getOption = () => ({
+  getOption = () =>  (
+    this.props.amostra==undefined ? 
+    ({
     grid: {},
     xAxis: {
         type: 'value'
@@ -57,16 +74,35 @@ export default class Chart2D extends PureComponent<Props> {
         source: this.props.list
       },
     series: this.state.series
-  })
+    }) : ({
+    grid: {},
+    xAxis: {
+        type: 'value'
+    },
+    yAxis: {
+        type: 'value'
+    },
+    tooltip: {
+      trigger: 'item',
+      enterable: true
+     },
+    dataset: {
+        source: this.props.list
+      },
+    series: this.state.series_test
+    })
+  )
 
   render() {
     return (
       <div className={styles.opa2D}>
-        <div className={styles.backButton} data-tid="backButton">
-        </div>
+        <div className={styles.backButton} data-tid="backButton" />
         <div className={styles.parent}>
-          <ReactEcharts option={this.getOption()} lazyUpdate={true}  
-                        style={{ height: '100%' }}/>
+          <ReactEcharts
+            option={this.getOption()}
+            lazyUpdate
+            style={{ height: '100%' }}
+          />
         </div>
       </div>
     );
