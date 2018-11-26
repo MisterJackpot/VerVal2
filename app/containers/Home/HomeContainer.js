@@ -61,6 +61,7 @@ export default class HomeContainer extends Component<Props> {
             <ImageWrapperComponent path={'Assets/federages.png'}/>
             <InputComponent onChange={this.onChange} onKeyPress={this.validarPressEnter}/> 
             <NavigateButtonComponent text="Entrar"  click={this.validarSenha} autoFocus/>
+            
 		</div>
     );
   }

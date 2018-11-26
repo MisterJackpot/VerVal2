@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import List from './List';
 import styles from './ListCorrelation.css';
-import EuclideanBO from '../../utils/BO/EuclideanBO';
+import FilterBO from '../../utils/BO/FilterBO';
 
-export default class FilteredList extends Component<Props> {
+export default class FilteredDataList extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       initialItems: [[]],
-      items: [[]]
+      items: [[]],
+      dateInitial : null,
+      dateFinal : null
     };
 
-    EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, 80).then(result =>{
-      var amostras = [[]];
-      var array = result;
-      array.forEach(element => {
-        amostras.push(element);
-        this.state.initialItems.push(element);
-      });
-      this.state.initialItems.shift();
-      this.state.initialItems.shift();
-      this.setState({initialItems:amostras});
+    FilterBO.FilterDate(this.props.dataInicio, this.props.dataFinal).then(result =>{
+        var amostras = [[]];
+        var array = result;
+        array.forEach(element => {
+          amostras.push(element);
+          this.state.initialItems.push(element);
+        });
+        this.state.initialItems.shift();
+        this.setState({initialItems:amostras});
     });
   }
 
@@ -33,7 +34,6 @@ export default class FilteredList extends Component<Props> {
       <div className={styles['mount-point']}>
         <div className={styles.body}>
           <div align='center'>
-          <h1>{this.props.amostra}</h1>
           </div>
           <div>
             <List items={this.state.items} />

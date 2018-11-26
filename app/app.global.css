@@ -5,6 +5,7 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import "~react-s-alert/dist/s-alert-default.css";
 @import "~react-s-alert/dist/s-alert-css-effects/stackslide.css";
+@import "~react-datepicker/dist/react-datepicker.css";
 
 body {
   position: relative;
