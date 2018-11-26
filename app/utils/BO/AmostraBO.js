@@ -40,7 +40,7 @@ const AmostraBO = {
 
   insert: amostra => {
     return new Promise((resolve, error) => {
-      AmostraDAO.getIds().then(result => {
+      AmostraDAO.getIdsData().then(result => {
         var aux = '';
         var errorList = [];
         var results = result.map((value,index,array) =>{

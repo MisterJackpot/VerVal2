@@ -17,8 +17,7 @@ import Amostra from "../DB/DAO/AmostraDAO";
 			return pca.getExplainedVariance().slice(0,3); 
 		},
 		getPCAData: async() => {
-			let promise = Amostra.getAllComp();
-			const amostras = await promise;
+			const amostras = await Amostra.getAllComp();
 			const PCA = require('ml-pca');
 			let arrayOfArraysOfNumbers = amostras.map(a => {
 				let result = []
@@ -27,10 +26,11 @@ import Amostra from "../DB/DAO/AmostraDAO";
 				})
 				return result
 			})
-			let aux = new PCA(arrayOfArraysOfNumbers).predict(arrayOfArraysOfNumbers);
-			for(let i = 0; i < aux.length;i++)
-				aux[i] = aux[i]
-			return  aux;
+			let pca = new PCA(arrayOfArraysOfNumbers).predict(arrayOfArraysOfNumbers);
+			for(let i = 0; i < pca.length;i++){
+				pca[i] = pca[i].slice(0,3)
+			}
+			return  pca;
 	},
 		getAllDatas : async () => {
 			let promise = Amostra.getAllComp();

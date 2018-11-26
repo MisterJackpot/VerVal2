@@ -53,6 +53,7 @@ export default class Chart3D extends PureComponent<Props> {
           'P1',
           'P2',
           'P3',
+          'ID',
         ],
         encode: {
                 x: 'P1',

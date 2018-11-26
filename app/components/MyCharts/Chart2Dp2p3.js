@@ -19,10 +19,11 @@ export default class Chart2Dp2p3 extends PureComponent<Props> {
           name: '2D',
           type: 'scatter',
           data: this.props.list,
-          dimensions: ['P1','P2','P3'],
+          dimensions: ['P1','P2','P3','ID'],
           encode: {
             x: 'P2',
-            y: 'P3'
+            y: 'P3',
+            id: 'ID'
           },
         }
       ],

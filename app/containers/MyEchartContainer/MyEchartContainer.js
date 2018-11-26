@@ -5,6 +5,7 @@ import Chart2Dp1p3 from '../../components/MyCharts/Chart2Dp1p3';
 import Chart2Dp2p3 from '../../components/MyCharts/Chart2Dp2p3';
 import ChangeGraphComponent from '../../components/ChangeGraphComponent/ChangeGraphComponent';
 import PCA from '../../utils/BO/PCABO.js';
+import Amostra from "../../utils/DB/DAO/AmostraDAO";
 
 type Props = {};
 
@@ -16,15 +17,32 @@ export default class MyChartContainer extends React.Component<Props> {
       horizontal: '',
       vertical: '',
       csv: false,
-      items: []
+      items: [],
     };
 
-    PCA.getPCAData().then(result => {
+    PCA.getPCAData().then(async result => {
       var amostras = [];
+      var ids = await Amostra.getIds();
       var array = result;
       array.forEach(element => {
         amostras.push(element);
       });
+
+      let ids_aux = ids.map(a => {
+				let result = []
+				Object.keys(a).forEach(key => {
+					result.push(a[key])
+				})
+				return result
+      })
+      
+      for (let i = 0; i < amostras.length; i++){
+        amostras[i].push(ids_aux[i])
+        console.log(amostras[i])
+      }
+
+      
+
       this.setState({ items: amostras });
       this.setState({ typeChart: 1 });
     });
