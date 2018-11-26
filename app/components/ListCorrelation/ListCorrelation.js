@@ -12,19 +12,15 @@ export default class FilteredList extends Component<Props> {
       percentState: 80
     };
 
-    this.getCorrelations(80);
+    this.getCorrelations(this.state.percentState);
 
-  }
-
-  setPercent = (percentAux) => {
-    this.getCorrelations(percentAux)
   }
 
   getCorrelations = (percent) => {
     EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, percent).then(result =>{
       var amostras = [[]];
       var array = result;
-      console.log(result)
+      console.log(result);
       array.forEach(element => {
         amostras.push(element);
         this.state.initialItems.push(element);
@@ -40,7 +36,7 @@ export default class FilteredList extends Component<Props> {
   }
 
   handleChange = (e) => {
-    this.setState( () => ({percentState: e }))
+    this.setState({percentState: e.target.value})
   }
 
   render() {
@@ -49,7 +45,7 @@ export default class FilteredList extends Component<Props> {
         <div className={styles.body}>
           <div align='center'>
           <h1>{this.props.amostra}</h1>
-          <input onChange={e => this.handleChange(e)}></input>
+          <input onChange={this.handleChange.bind(this)}></input>
           <button onClick={() => this.getCorrelations(this.state.percentState)}>Salvar</button>
           </div>
           <div>
