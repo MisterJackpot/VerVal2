@@ -29,6 +29,10 @@ A boilerplate for Scalable Cross-Platform Desktop Apps based on  <a href="http:/
 <a href="http://eslint.org/"><img src="./internals/img/eslint-padded-90.png" /></a>
 <a href="https://facebook.github.io/jest/"><img src="./internals/img/jest-padded-90.png" /></a>
 <a href="https://yarnpkg.com/"><img src="./internals/img/yarn-padded-90.png" /></a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4523da32feb75e09cb33b5e291b9c2ae04939ce0
 </div>
 
 <hr>
