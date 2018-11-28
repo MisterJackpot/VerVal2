@@ -14,7 +14,7 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      series: [
+      series:
         {
           name: '2D',
           type: 'scatter',
@@ -25,25 +25,22 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
             y: 'P2',
             id: 'ID'
           },
-        }
-      ],
+        },
       symbolSize: 2.5,
-      series_test: [
-        {
-          name: '2D',
-          type: 'effectScatter',
-          rippleEffect: {
-              brushType: 'stroke'
-          },
-          data: this.props.list,
-          dimensions: ['P1','P2','P3','ID'],
-          encode: {
-            x: 'P1',
-            y: 'P2',
-            id: 'ID'
-          },
-        }
-      ]
+      series_test:{
+        name: '2D',
+        type: 'effectScatter',
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        data: this.props.list,
+        dimensions: ['P1','P2','P3','ID'],
+        encode: {
+          x: 'P1',
+          y: 'P2',
+          id: 'ID'
+        },
+      }
     };
   }
 
@@ -60,14 +57,30 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
 
   removeElementFromList(id) {
     let arr = [];
+    var teste = [this.state.series, this.state.series_test];
+    var minhaAmostra = 0;
+
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    console.log(id)
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+
     for(let i = 0; i<this.props.list.length; i++){
-      if(this.props.list[i][3] == id){
-        console.log("found");
+      if(i == 1) console.log(this.props.list[i][3][0])
+      if(this.props.list[i][3][0] == id){
+        minhaAmostra = i
         continue;
       }
       arr.push(this.props.list[i]);
     }
-    return arr;
+    
+    teste[0].data = this.props.list;
+    teste[1].data = this.props.list[minhaAmostra][3];
+
+    console.log(teste[0].type)
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    console.log(teste[1].type)
+
+    return teste;
   }
 
   getOption = () =>  (
@@ -100,10 +113,7 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
       trigger: 'item',
       enterable: true
      },
-    dataset: {
-        source: this.removeElementFromList(this.props.amostra)
-      },
-    series: this.state.series_test
+    series: this.removeElementFromList(this.props.amostra)
     })
   )
 
