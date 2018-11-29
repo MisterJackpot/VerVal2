@@ -25,7 +25,6 @@
     box-sizing: border-box;
     width: 5rem;
 }
-
 .alignButtons {
   display: flex;
   flex-direction: row;

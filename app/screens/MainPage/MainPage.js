@@ -1,8 +1,4 @@
-// @flow
-import React, { Component } from 'react';
-import CounterContainer from '../../containers/Counter/CounterContainer';
-import Chart3D from '../../components/MyCharts/Chart3D';
-import Chart2Dp1p2 from '../../components/MyCharts/Chart2Dp1p2';
+import React from 'react'
 import MyChartContainer from '../../containers/MyEchartContainer/MyEchartContainer'
 import ListContainer from '../../containers/ListaAmostras/ListaAmostrasContainer'
 import styles from './MainPage.css'
@@ -11,7 +7,7 @@ import PDFButtonComponent from '../../components/PDFButtonComponent/PDFButtonCom
 
 type Props = {};
 
-export default class MainPage extends Component<Props> {
+export default class MainPage extends React.Component<Props> {
   props: Props;
 
   constructor(props) {
@@ -51,5 +47,6 @@ export default class MainPage extends Component<Props> {
             ) : (<ListContainer setAmostraSelecionada={this.setAmostraSelecionada} />)}
             </div>
       </div>
+
   )}
 }
