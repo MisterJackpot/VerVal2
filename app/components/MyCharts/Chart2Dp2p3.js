@@ -14,7 +14,7 @@ export default class Chart2Dp2p3 extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      series: [
+      series:
         {
           name: '2D',
           type: 'scatter',
@@ -25,9 +25,27 @@ export default class Chart2Dp2p3 extends PureComponent<Props> {
             y: 'P3',
             id: 'ID'
           },
-        }
-      ],
-      symbolSize: 2.5
+      },
+      symbolSize: 2.5,
+      series_test:{
+        name: '2D',
+        type: 'effectScatter',
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        itemStyle: {
+          color: '0000ff',
+          borderWidth: 0.3,
+          borderColor: 'rgba(255,255,255,0.8)'
+        },
+        data: '00',
+        dimensions: ['P1','P2','P3','ID'],
+        encode: {
+          x: 'P2',
+          y: 'P3',
+          id: 'ID'
+        },
+      }
     };
   }
 
@@ -42,23 +60,56 @@ export default class Chart2Dp2p3 extends PureComponent<Props> {
     });
   }
 
-  getOption = () => ({
+  removeElementFromList(id) {
+    var series = [this.state.series, this.state.series_test];
+    var minhaAmostra = 0;
+
+    for(let i = 0; i<this.props.list.length; i++){
+      if(this.props.list[i][3][0] == id){
+        minhaAmostra = i
+        break;
+      }
+    }
+    series[1].data = [this.props.list[minhaAmostra]];
+
+    series[0].data = this.props.list;
+
+    return series;
+  }
+
+  getOption = () =>  (
+    this.props.amostra==undefined ? 
+    ({
     grid: {},
     xAxis: {
-      type: 'value'
+        type: 'value'
     },
     yAxis: {
-      type: 'value'
+        type: 'value'
     },
     tooltip: {
       trigger: 'item',
       enterable: true
-    },
+     },
     dataset: {
-      source: this.props.list
-    },
+        source: this.props.list
+      },
     series: this.state.series
-  })
+    }) : ({
+    grid: {},
+    xAxis: {
+        type: 'value'
+    },
+    yAxis: {
+        type: 'value'
+    },
+    tooltip: {
+      trigger: 'item',
+      enterable: true
+     },
+    series: this.removeElementFromList(this.props.amostra)
+    })
+  )
 
   render() {
     return (

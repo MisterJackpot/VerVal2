@@ -33,7 +33,12 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
         rippleEffect: {
             brushType: 'stroke'
         },
-        data: this.props.list,
+        itemStyle: {
+          color: '0000ff',
+          borderWidth: 0.3,
+          borderColor: 'rgba(255,255,255,0.8)'
+        },
+        data: '00',
         dimensions: ['P1','P2','P3','ID'],
         encode: {
           x: 'P1',
@@ -54,33 +59,22 @@ export default class Chart2Dp1p2 extends PureComponent<Props> {
       series: seriesU
     });
   }
-
+  
   removeElementFromList(id) {
-    let arr = [];
-    var teste = [this.state.series, this.state.series_test];
+    var series = [this.state.series, this.state.series_test];
     var minhaAmostra = 0;
 
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log(id)
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
     for(let i = 0; i<this.props.list.length; i++){
-      if(i == 1) console.log(this.props.list[i][3][0])
       if(this.props.list[i][3][0] == id){
         minhaAmostra = i
-        continue;
+        break;
       }
-      arr.push(this.props.list[i]);
     }
-    
-    teste[0].data = this.props.list;
-    teste[1].data = this.props.list[minhaAmostra][3];
+    series[1].data = [this.props.list[minhaAmostra]];
 
-    console.log(teste[0].type)
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    console.log(teste[1].type)
+    series[0].data = this.props.list;
 
-    return teste;
+    return series;
   }
 
   getOption = () =>  (

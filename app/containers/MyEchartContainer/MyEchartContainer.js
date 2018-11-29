@@ -38,7 +38,6 @@ export default class MyChartContainer extends React.Component<Props> {
       
       for (let i = 0; i < amostras.length; i++){
         amostras[i].push(ids_aux[i])
-        console.log(amostras[i])
       }
 
       
