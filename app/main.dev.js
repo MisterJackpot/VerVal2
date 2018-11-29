@@ -64,8 +64,8 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 1080,
+    height: 720
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -93,8 +93,11 @@ app.on('ready', async () => {
 });
 
 ipcMain.on('print-pdf', function(event, path){
+  const MICRONS_PER_IN = 25400;
+  const width = toString(mainWindow.width*MICRONS_PER_IN);
+  const height = toString(mainWindow.height*MICRONS_PER_IN);
   let focusedWindow = BrowserWindow.getAllWindows()[0];
-  focusedWindow.webContents.printToPDF({landscape:true}, (error, data) => {
+  focusedWindow.webContents.printToPDF({landscape:true, pageSize:{width, height}}, (error, data) => {
     if(path!=null){
       fs.writeFile(path, data, (error) => {
         console.log(error);

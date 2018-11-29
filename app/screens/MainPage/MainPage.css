@@ -23,15 +23,10 @@
     padding: 1rem;
     cursor: pointer;
     box-sizing: border-box;
+    width: 5rem;
 }
-.datePicker{
-  border-radius: 4px;
-  font-size: 1rem;
-  padding:5px;
-  margin-right: 3em;
-  
-}
-.datePickerDiv{
-  text-align: center;
-  margin-top:-3.2em;
+.alignButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -1,5 +1,4 @@
 import Amostra from "../DB/DAO/AmostraDAO";
-import Filtro from "./FilterBO";
 	const PCA = {
 		getPCAVariance : async () => {
 		let promise = Amostra.getAllComp();
