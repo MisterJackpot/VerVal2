@@ -8,25 +8,35 @@ export default class FilteredList extends Component<Props> {
     super(props);
     this.state = {
       initialItems: [[]],
-      items: [[]]
+      items: [[]],
+      percentState: 80
     };
 
-    EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, 80).then(result =>{
+    this.getCorrelations(this.state.percentState);
+
+  }
+
+  getCorrelations = (percent) => {
+    EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, percent).then(result =>{
+      this.setState({initialItems:[]});
       var amostras = [[]];
       var array = result;
-      console.log(result)
       array.forEach(element => {
         amostras.push(element);
         this.state.initialItems.push(element);
       });
       this.state.initialItems.shift();
       this.state.initialItems.shift();
-      this.setState({initialItems:amostras});
+      this.setState({items:this.state.initialItems});
     });
   }
 
   componentWillMount() {
     this.setState({ items: this.state.initialItems });
+  }
+
+  handleChange = (e) => {
+    this.setState({percentState: e.target.value})
   }
 
   render() {
@@ -35,6 +45,14 @@ export default class FilteredList extends Component<Props> {
         <div className={styles.body}>
           <div align='center'>
           <h1>{this.props.amostra}</h1>
+          
+            <input 
+              className={styles['input']} 
+              onChange={this.handleChange.bind(this)}
+              placeholder="Correlação Desejada"
+            />
+          
+          <button className={styles['button']} onClick={() => this.getCorrelations(this.state.percentState)}>Salvar</button>
           </div>
           <div>
             <List items={this.state.items} />

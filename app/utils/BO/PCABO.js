@@ -1,8 +1,6 @@
 import Amostra from "../DB/DAO/AmostraDAO";
-
 	const PCA = {
 		getPCAVariance : async () => {
-
 		let promise = Amostra.getAllComp();
 		const amostras = await promise;
 		const PCA = require('ml-pca');

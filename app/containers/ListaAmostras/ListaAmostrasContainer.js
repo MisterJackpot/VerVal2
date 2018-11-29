@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FilteredList from '../../components/ListaAmostrasComponent/ReactFilterListComponent';
 import CounterContainer from '../Counter/CounterContainer.js';
+import styles from './ListaAmostrasContainer.css';
 
 type Props = {};
 

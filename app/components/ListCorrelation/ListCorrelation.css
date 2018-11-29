@@ -75,3 +75,25 @@
     ::-webkit-scrollbar-thumb:hover {
       background: rgb(146, 146, 146);
     }
+
+    .button {
+      border-radius: 4px;
+      background-color: rgb(7, 77, 34);
+      border: transparent;
+      color: #FFFFFF;
+      font-size: 1rem;
+      padding: 0.4rem;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    .input {
+      margin: 0.4em;
+      font-size: 0.8rem;
+      width: 65%;
+      padding-left: 0.4rem;
+      box-sizing: border-box;
+      border-color: rgb(146, 146, 146);;
+      border-width: 0.1em;
+    }
+
