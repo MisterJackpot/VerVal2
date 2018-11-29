@@ -18,6 +18,7 @@ export default class FilteredList extends Component<Props> {
 
   getCorrelations = (percent) => {
     EuclideanBO.getAllCorrelationByPercentual(this.props.amostra, percent).then(result =>{
+      this.setState({initialItems:[]});
       var amostras = [[]];
       var array = result;
       array.forEach(element => {
@@ -26,9 +27,7 @@ export default class FilteredList extends Component<Props> {
       });
       this.state.initialItems.shift();
       this.state.initialItems.shift();
-      this.state.items.shift();
-      this.state.items.shift();
-      this.setState({items:amostras});
+      this.setState({items:this.state.initialItems});
     });
   }
 
