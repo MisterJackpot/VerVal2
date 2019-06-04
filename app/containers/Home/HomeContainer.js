@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import routes from '../../constants/routes.json';
 import styles from './Home.css';
 import ImageWrapperComponent from '../../components/ImageWrapperComponent/ImageWrapperComponent';
-import LoginInputComponent from '../../components/LoginInputComponent/LoginInputComponent';
 import UploadCsv from '../../components/UploadCsv/UploadCsv';
 import NavigateButtonComponent from '../../components/NavigateButtonComponent/NavigateButtonComponent';
 import { validarSenhaLogin } from '../../utils/BO/SenhaBO';
