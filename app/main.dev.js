@@ -105,7 +105,6 @@ ipcMain.on('print-pdf', function(event, path){
     }
     else{
       let d = new Date();
-      d.getTime();
       fs.writeFile('./'+d+'.pdf', data, (error) => {
         console.log(error);
       })
